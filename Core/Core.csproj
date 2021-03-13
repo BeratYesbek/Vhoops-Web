@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="vhoops-a2dce-firebase-adminsdk-lp79g-566ac754ea.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="vhoops-a2dce-firebase-adminsdk-lp79g-566ac754ea.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Cloud.Firestore" Version="2.3.0" />
+  </ItemGroup>
+
+</Project>
