@@ -1,6 +1,5 @@
 using Core.DataAccess.Concrete;
 using Core.Utilities.Result;
-using Entities;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -35,7 +34,7 @@ namespace WebUI
                 {
                     webBuilder.UseStartup<Startup>();
                 });
-
+        /*
         public static async Task getData()
         {
 
@@ -44,6 +43,6 @@ namespace WebUI
             Debug.WriteLine(data.ToString());
             Debug.WriteLine("ömer adam deðil");
 
-        }
+        }*/
     }
 }
