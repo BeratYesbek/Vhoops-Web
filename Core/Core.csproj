@@ -18,4 +18,8 @@
     <PackageReference Include="Google.Cloud.Firestore" Version="2.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DataAccess\Concrete\" />
+  </ItemGroup>
+
 </Project>
