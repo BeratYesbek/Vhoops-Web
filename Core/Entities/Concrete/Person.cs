@@ -6,13 +6,14 @@ namespace Core.Entities.Concrete
 {
     public class Person : IEntity
     {
-        public Person(string firstName, string lastName, string email, string userID, string userUUID)
+        public Person(string firstName, string lastName, string email, string password , string userID, string userUUID)
         {
             FirstName = firstName;
             LastName = lastName;
             Email = email;
             UserID = userID;
             UserUUID = userUUID;
+            Password = password;
         }
 
         public string FirstName { get; }
@@ -21,8 +22,11 @@ namespace Core.Entities.Concrete
 
         public string Email { get; }
 
+        public string Password { get; }
+
         public string UserID { get; }
 
         public string UserUUID { get; }
+
     }
 }
