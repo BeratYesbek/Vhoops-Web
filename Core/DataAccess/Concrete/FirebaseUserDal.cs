@@ -22,7 +22,6 @@ namespace Core.DataAccess.Concrete
         {
             FirebaseCollections.RunFirebase();
         }
-
         public async Task<Result> AddData(User entity)
         {
             FirestoreDb database = FirestoreDb.Create(FirebaseCollections.DATABASE);
@@ -161,8 +160,8 @@ namespace Core.DataAccess.Concrete
             var file = File.Open(@"C:\Users\berat\Pictures\berat.jpg", FileMode.Open);
 
             var task = new FirebaseStorage("vhoops-a2dce.appspot.com")
-                .Child("userProfile")
-                .Child("userid")
+                .Child("data")
+                .Child("random")
                 .Child("file.png")
                 .GetDownloadUrlAsync();
             var downloadUrl = await task;
