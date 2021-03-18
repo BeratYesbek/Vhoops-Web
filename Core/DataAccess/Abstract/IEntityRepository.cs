@@ -18,6 +18,8 @@ namespace Core.DataAccess.Abstract
 
         Task<IDataResult<List<T>>> GetAll();
 
+        Task<IDataResult<List<T>>> GetById(string id);
+
 
 
     }
