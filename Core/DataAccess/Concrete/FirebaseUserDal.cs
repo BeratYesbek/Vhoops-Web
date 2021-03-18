@@ -15,18 +15,19 @@ using System.Threading.Tasks;
 
 namespace Core.DataAccess.Concrete
 {
-    public class FirebaseUserDal : IEntityRepository<User>, IFirebaseUserDal
+    public class FirebaseUserDal : IFirebaseUserDal
     {
 
         public FirebaseUserDal()
         {
-            FirebaseCollections.RunFirebase();
+            FirebaseConstants.RunFirebase();
         }
-        public async Task<Result> AddData(User entity)
-        {
-            FirestoreDb database = FirestoreDb.Create(FirebaseCollections.DATABASE);
 
-            CollectionReference collection = database.Collection(FirebaseCollections.USER_COLLECTION);
+        public async Task<Result> Add(User entity)
+        {
+            FirestoreDb database = FirestoreDb.Create(FirebaseConstants.DATABASE);
+
+            CollectionReference collection = database.Collection(FirebaseConstants.USER_COLLECTION);
             Dictionary<string, object> user = new Dictionary<string, object>
             {
 
@@ -44,7 +45,7 @@ namespace Core.DataAccess.Concrete
             return new ErrorResult();
         }
 
-        public async Task<Result> DeleteData(User entity)
+        public async Task<Result> Delete(User entity)
         {
             throw new NotImplementedException();
 
@@ -56,11 +57,11 @@ namespace Core.DataAccess.Concrete
         }
 
 
-        public async Task<Result> UpdateData(User entity)
+        public async Task<Result> Update(User entity)
         {
-            FirestoreDb database = FirestoreDb.Create(FirebaseCollections.DATABASE);
+            FirestoreDb database = FirestoreDb.Create(FirebaseConstants.DATABASE);
 
-            DocumentReference document = database.Collection(FirebaseCollections.USER_COLLECTION).Document(entity.UserID);
+            DocumentReference document = database.Collection(FirebaseConstants.USER_COLLECTION).Document(entity.UserID);
             Dictionary<string, object> user = new Dictionary<string, object>
             {
                 {"FirstName",entity.FirstName },
@@ -95,20 +96,20 @@ namespace Core.DataAccess.Concrete
 
         public async Task<Result> LoginUser(User entity)
         {
-            
+
             throw new NotImplementedException();
         }
 
 
 
-        public async Task<IDataResult<List<User>>> GetById(string Id)
+        public async Task<IDataResult<User>> GetById(string Id)
         {
-            FirestoreDb database = FirestoreDb.Create(FirebaseCollections.DATABASE);
+            FirestoreDb database = FirestoreDb.Create(FirebaseConstants.DATABASE);
 
-            Query userQuery = database.Collection(FirebaseCollections.USER_COLLECTION).WhereEqualTo("UserID", Id);
+            Query userQuery = database.Collection(FirebaseConstants.USER_COLLECTION).WhereEqualTo("UserID", Id);
             QuerySnapshot userSnapshots = await userQuery.GetSnapshotAsync();
 
-            List<User> userList = new List<User>();
+            User user = null;
             foreach (DocumentSnapshot document in userSnapshots.Documents)
             {
                 Dictionary<string, object> data = document.ToDictionary();
@@ -118,15 +119,16 @@ namespace Core.DataAccess.Concrete
                 string email = data["Email"].ToString();
                 string userID = data["UserID"].ToString();
 
-                userList.Add(new User(firstName, lastName, email, "", ""));
+                user = new User(firstName, lastName, email, "", "");
+
 
             }
 
-            if (userList.Count > 0)
+            if (user != null)
             {
-                return new SuccessDataResult<List<User>>(userList);
+                return new SuccessDataResult<User>(user);
             }
-            return new ErrorDataResult<List<User>>();
+            return new ErrorDataResult<User>();
 
         }
 
@@ -134,8 +136,8 @@ namespace Core.DataAccess.Concrete
         {
 
             var file = File.Open(@"C:\Users\berat\Pictures\berat.jpg", FileMode.Open);
-           
-            
+
+
             // here is have to change later
             var task = new FirebaseStorage("vhoops-a2dce.appspot.com")
                 .Child("data")

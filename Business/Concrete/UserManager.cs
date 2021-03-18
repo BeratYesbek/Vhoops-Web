@@ -1,7 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Core.DataAccess.Abstract;
 using Core.Entities.Concrete;
-using Core.Utilities.Business;
 using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
 using DataAccess.Abstract;
@@ -15,7 +15,7 @@ namespace Business.Concrete
 {
     public class UserManager : IUserService
     {
-        
+
         IUserDal _userDal;
 
         public UserManager(IUserDal userDal)
@@ -23,67 +23,50 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
-        public async Task<IResult> Add(User manager)
+        public async Task<Result> Add(User entity)
         {
-            IResult result = BusinessRules.Run(CheckSpecialChar(manager.Password));
-            if (result == null)
-            {
-                return  result;
-            }
-            else
-            {
-                await _userDal.AddData(manager);
-
-                return new SuccessResult(Messages.UserAdded);
-            }
+            var result = await _userDal.Add(entity);
+            return new SuccessResult();
 
         }
-        public async Task<IResult> Delete(User manager)
-        {
-            if (false)
-            {
 
-            }
-            else
-            {
-                await _userDal.DeleteData(manager);
-
-                return new SuccessResult(Messages.UserDeleted);
-            }
-        } 
-        public async Task<IResult> Update(User manager)
-        {
-            if (false)
-            {
-               
-            }
-            else
-            {
-                await _userDal.UpdateData(manager);
-
-                return new SuccessResult(Messages.UserUpdated);
-            }
-        }
-        public async Task<IResult> CreateLogin(User manager)
+        public Task<IResult> CreateLogin(User entity)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IResult> CreateUser(User manager)
+        public async Task<IResult> CreateUser(User entity)
+        {
+           await _userDal.CreateUser(entity);
+
+            return new SuccessResult();
+        }
+
+        public Task<Result> Delete(User entity)
         {
             throw new NotImplementedException();
         }
-        public async Task<IDataResult<List<User>>> GetAll()
+
+        public Task<IDataResult<List<User>>> GetAll()
         {
-            return await _userDal.GetAll();
+            throw new NotImplementedException();
         }
 
-        public async Task<IDataResult<User>> GetById(User managerId)
+        public Task<IDataResult<User>> GetById(string id)
         {
-           
-            return new SuccessDataResult<User>();
-
+            throw new NotImplementedException();
         }
+
+        public Task<IDataResult<User>> GetProfileImage(User manager)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Result> Update(User entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<IResult> UpdateProfileImage(User manager)
         {
             throw new NotImplementedException();
@@ -94,15 +77,26 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        public Task<IDataResult<User>> GetProfileImage(User manager)
-        {
-            throw new NotImplementedException();
-        }
 
 
         //<---------------  BusinessRules  --------------->
 
-        private IResult CheckSpecialChar(string password)
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*    private IResult CheckSpecialChar(string password)
         {
             Regex passwordSymbol = new Regex("[^a-zA-Z0-9]");
             if (!passwordSymbol.IsMatch(password))
@@ -113,8 +107,4 @@ namespace Business.Concrete
             {
                 return new SuccessResult();
             }
-        }
-
-        
-    }
-}
+        }*/

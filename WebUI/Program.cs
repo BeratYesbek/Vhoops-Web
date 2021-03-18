@@ -1,5 +1,7 @@
+using Business.Concrete;
 using Core.DataAccess.Concrete;
 using Core.Utilities.Result;
+using DataAccess.Concrete.MVC;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -17,8 +19,8 @@ namespace WebUI
         public static void Main(string[] args)
         {
 
-           
 
+            getData();
             CreateHostBuilder(args).Build().Run();
 
         }
@@ -34,15 +36,13 @@ namespace WebUI
                 {
                     webBuilder.UseStartup<Startup>();
                 });
-        /*
+
         public static async Task getData()
         {
+/*
+            UserManager usermanager = new UserManager(new UserDal());
+            usermanager.CreateUser(new Core.Entities.Concrete.User("berat", "yesbek", "omeryavuz@gmail.com", "1223456", "beratybk"));*/
 
-            FirebaseRepository class1 = new FirebaseRepository();
-            var data = await class1.GetAll();
-            Debug.WriteLine(data.ToString());
-            Debug.WriteLine("ömer adam deðil");
-
-        }*/
+        }
     }
 }

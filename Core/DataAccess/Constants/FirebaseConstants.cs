@@ -12,7 +12,8 @@ using System.Threading.Tasks;
 
 namespace Core.DataAccess.Constants
 {
-    public static class FirebaseCollections
+    //That's static class can keep properties of firebase
+    public static class FirebaseConstants
     {
 
 
@@ -27,7 +28,7 @@ namespace Core.DataAccess.Constants
         {
             try
             {
-
+                // here is working to cloud firebase
                 string path = AppDomain.CurrentDomain.BaseDirectory + @"vhoops-a2dce-firebase-adminsdk-lp79g-52f9a01b70.json";
 
                 FirebaseApp.Create(new AppOptions()

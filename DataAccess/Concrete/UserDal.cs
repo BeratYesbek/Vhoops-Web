@@ -1,4 +1,5 @@
-﻿using Core.DataAccess.Concrete;
+﻿using Core.DataAccess.Abstract.Firebase;
+using Core.DataAccess.Concrete;
 using Core.Entities.Concrete;
 using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
@@ -10,7 +11,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.MVC
 {
-    public class UserDal :FirebaseUserDal, IUserDal
+    
+    public class UserDal : FirebaseUserDal, IUserDal
     {
       
     }

@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace Core.DataAccess.Abstract
 {
-    public interface IEntityRepository<T>
+    public interface IEntityRepository<T> where T : class, IEntity
     {
-        Task<Result> AddData(T entity);
+        Task<Result> Add(T entity);
 
-        Task<Result> UpdateData(T entity);
+        Task<Result> Update(T entity);
 
-        Task<Result> DeleteData(T entity);
+        Task<Result> Delete(T entity);
 
         Task<IDataResult<List<T>>> GetAll();
 
-        Task<IDataResult<List<T>>> GetById(string id);
+        Task<IDataResult<T>> GetById(string id);
 
 
 

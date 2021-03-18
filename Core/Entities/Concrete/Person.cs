@@ -28,7 +28,7 @@ namespace Core.Entities.Concrete
 
         public string Password { get; }
 
-        public string UserID { get; }
+        public string UserID { get; set; }
 
         public string UserName { get; }
     }
