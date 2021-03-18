@@ -1,21 +1,35 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Win32Resource></Win32Resource>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="vhoops-a2dce-firebase-adminsdk-lp79g-566ac754ea.json" />
+    <None Remove="vhoops-a2dce-firebase-adminsdk-lp79g-52f9a01b70.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="vhoops-a2dce-firebase-adminsdk-lp79g-566ac754ea.json">
+    <Content Include="vhoops-a2dce-firebase-adminsdk-lp79g-52f9a01b70.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
+
+
   <ItemGroup>
+    <PackageReference Include="AspNetCore.Firebase.Authentication" Version="2.0.1" />
+    <PackageReference Include="Auth0.Core" Version="7.6.1" />
+    <PackageReference Include="FirebaseAdmin" Version="2.0.0" />
+    <PackageReference Include="FirebaseAuthentication.net" Version="3.6.0" />
+    <PackageReference Include="FirebaseNet" Version="1.0.1" />
+    <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
+    <PackageReference Include="Google.Apis" Version="1.50.0" />
+    <PackageReference Include="Google.Apis.Analytics.v3" Version="1.50.0.1679" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.50.0" />
+    <PackageReference Include="Google.Apis.Sheets.v4" Version="1.50.0.2245" />
     <PackageReference Include="Google.Cloud.Firestore" Version="2.3.0" />
+    <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="5.0.1" />
   </ItemGroup>
 
 </Project>
