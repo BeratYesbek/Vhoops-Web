@@ -8,10 +8,10 @@ namespace Business.Constants
     {
         public static string MinPasswordError = "Şifre minimum 8 karakter içermelidir.";
         public static string CheckSpecialChar = "Şifreniz en az bir özel karakter içermelidir.";
-        public static string a2 = "Şifre minimum 8 karakter içermelidir.";
-        public static string a3 = "Şifre minimum 8 karakter içermelidir.";
-        public static string a4 = "Şifre minimum 8 karakter içermelidir.";
-        public static string a5 = "Şifre minimum 8 karakter içermelidir.";
+        public static string UserAdded = "Kullanıcı başarıyla kayıt oldu.";
+        public static string UserDeleted = "Kullanıcı başarıyla silindi.";
+        public static string UserUpdated = "Kullanıcı güncellendi.";
+        public static string a5 = "Kullanıcı güncellendi.";
         public static string a6 = "Şifre minimum 8 karakter içermelidir.";
 
     }

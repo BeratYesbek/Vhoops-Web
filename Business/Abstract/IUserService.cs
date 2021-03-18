@@ -9,7 +9,10 @@ namespace Business.Abstract
 {
     public interface IUserService : IServiceRepository<User>
     {
-        Task<IResult> CreateLogin();
-        Task<IResult> CreateUser();
+        Task<IResult> CreateLogin(User manager);
+        Task<IResult> CreateUser(User manager);
+        Task<IResult> UpdateProfileImage(User manager);
+        Task<IResult> UploadProfileImage(User manager);
+        Task<IDataResult<User>> GetProfileImage(User manager);
     }
 }

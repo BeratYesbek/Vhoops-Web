@@ -15,6 +15,7 @@ namespace Business.Concrete
 {
     public class UserManager : IUserService
     {
+        
         IUserDal _userDal;
 
         public UserManager(IUserDal userDal)
@@ -24,25 +25,51 @@ namespace Business.Concrete
 
         public async Task<IResult> Add(User manager)
         {
-            //IResult result = BusinessRules.Run(CheckSpecialChar(manager.password));
-            await  _userDal.AddData(manager);
+            IResult result = BusinessRules.Run(CheckSpecialChar(manager.Password));
+            if (result == null)
+            {
+                return  result;
+            }
+            else
+            {
+                await _userDal.AddData(manager);
 
-            return new SuccessResult();
+                return new SuccessResult(Messages.UserAdded);
+            }
+
         }
         public async Task<IResult> Delete(User manager)
         {
-            return await _userDal.DeleteData(manager);
+            if (false)
+            {
+
+            }
+            else
+            {
+                await _userDal.DeleteData(manager);
+
+                return new SuccessResult(Messages.UserDeleted);
+            }
         } 
         public async Task<IResult> Update(User manager)
         {
-            return await _userDal.UpdateData(manager);
+            if (false)
+            {
+               
+            }
+            else
+            {
+                await _userDal.UpdateData(manager);
+
+                return new SuccessResult(Messages.UserUpdated);
+            }
         }
-        public async Task<IResult> CreateLogin()
+        public async Task<IResult> CreateLogin(User manager)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IResult> CreateUser()
+        public async Task<IResult> CreateUser(User manager)
         {
             throw new NotImplementedException();
         }
@@ -53,22 +80,41 @@ namespace Business.Concrete
 
         public async Task<IDataResult<User>> GetById(User managerId)
         {
+           
+            return new SuccessDataResult<User>();
+
+        }
+        public Task<IResult> UpdateProfileImage(User manager)
+        {
             throw new NotImplementedException();
         }
 
+        public Task<IResult> UploadProfileImage(User manager)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IDataResult<User>> GetProfileImage(User manager)
+        {
+            throw new NotImplementedException();
+        }
+
+
         //<---------------  BusinessRules  --------------->
 
-        //private IResult CheckSpecialChar(User user)
-        //{
-        //    Regex reSymbol = new Regex("[^a-zA-Z0-9]");
-        //    if (!reSymbol.IsMatch(user.Password))
-        //    {
-        //        return new ErrorResult(Messages.CheckSpecialChar);
-        //    }
-        //    else
-        //    {
-        //        return new SuccessResult();
-        //    }
-        //}
+        private IResult CheckSpecialChar(string password)
+        {
+            Regex passwordSymbol = new Regex("[^a-zA-Z0-9]");
+            if (!passwordSymbol.IsMatch(password))
+            {
+                return new  ErrorResult(Messages.CheckSpecialChar);
+            }
+            else
+            {
+                return new SuccessResult();
+            }
+        }
+
+        
     }
 }
