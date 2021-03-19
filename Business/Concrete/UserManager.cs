@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Core.Autofac;
 using Core.DataAccess.Abstract;
 using Core.Entities.Concrete;
 using Core.Utilities.Result.Abstract;
@@ -17,12 +18,12 @@ namespace Business.Concrete
     {
 
         IUserDal _userDal;
-
         public UserManager(IUserDal userDal)
         {
             _userDal = userDal;
         }
 
+        //    [ValidationAspect(typeof(UserValidator))]
         public async Task<Result> Add(User entity)
         {
             var result = await _userDal.Add(entity);
@@ -30,7 +31,7 @@ namespace Business.Concrete
 
         }
 
-        public Task<IResult> CreateLogin(User entity)
+        public Task<IResult> UserLogin(User entity)
         {
             throw new NotImplementedException();
         }
@@ -84,17 +85,6 @@ namespace Business.Concrete
 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 /*    private IResult CheckSpecialChar(string password)
         {
