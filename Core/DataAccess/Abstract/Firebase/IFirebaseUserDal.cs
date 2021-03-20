@@ -1,4 +1,5 @@
 ﻿using Core.Entities.Concrete;
+using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,12 @@ namespace Core.DataAccess.Abstract.Firebase
 
     public interface IFirebaseUserDal : IEntityRepository<User>
     {
-        Task<Result> CreateUser(User entity);
+        Task<IResult> CreateUser(User entity);
 
-        Task<Result> LoginUser(User entity);
+        Task<IResult> LoginUser(User entity);
 
-        Task<Result> UploadProfileImage(Object profileImage);
+        Task<IResult> UploadProfileImage(Object profileImage);
 
-        Task<Result> UpdateProfileImage(Object profileImage);
+        Task<IResult> UpdateProfileImage(Object profileImage);
     }
 }

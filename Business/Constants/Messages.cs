@@ -11,8 +11,8 @@ namespace Business.Constants
         public static string UserAdded = "Kullanıcı başarıyla kayıt oldu.";
         public static string UserDeleted = "Kullanıcı başarıyla silindi.";
         public static string UserUpdated = "Kullanıcı güncellendi.";
-        public static string a5 = "Kullanıcı güncellendi.";
-        public static string a6 = "Şifre minimum 8 karakter içermelidir.";
+        public static string CheckIfCorrectEmail = "Lüften geçerli bir eposta giriniz.";
+        public static string CheckIfJustLetters = "Sadece harf içermelidir.";
 
     }
 }

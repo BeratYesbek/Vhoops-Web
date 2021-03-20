@@ -15,11 +15,16 @@ namespace Business.ValiditionRules.FluentValidation
     {
         public UserValidator()
         {
-            RuleFor(u=>u.Password).NotEmpty();
-            RuleFor(u=> u.Password).MinimumLength(8);
+            RuleFor(u => u.FirstName).NotEmpty().Must(CheckIfJustLetters).WithMessage(Messages.CheckIfJustLetters);
+            RuleFor(u => u.LastName).NotEmpty().Must(CheckIfJustLetters).WithMessage(Messages.CheckIfJustLetters);
+            RuleFor(u => u.UserName).NotEmpty();
+            RuleFor(u => u.Password).NotEmpty();
+            RuleFor(u => u.Email).NotEmpty();
+
+
+            RuleFor(u => u.Password).MinimumLength(8);
             //RuleFor(u => u.Password).Must(CheckSpecialChar).WithMessage("Şifreniz en az bir özel karakter içermelidir.");
-            RuleFor(u => u.FirstName).NotEmpty();
-            RuleFor(u => u.LastName).NotEmpty();
+
 
         }
 
@@ -35,5 +40,19 @@ namespace Business.ValiditionRules.FluentValidation
         //        return true;
         //    }
         //}
+
+        private bool CheckIfJustLetters(string name)
+        {
+            Regex passwordSymbol = new Regex(@"^[a-zA-Z]*$");
+            if (!passwordSymbol.IsMatch(name))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
     }
 }
