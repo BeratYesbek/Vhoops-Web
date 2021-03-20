@@ -23,7 +23,7 @@ namespace Core.DataAccess.Constants
         public static string DATABASE = "vhoops-a2dce";
         public static string STORAGE_PATH = "vhoops-a2dce.appspot.com";
 
-        
+
         public static void RunFirebase()
         {
             try
@@ -48,7 +48,6 @@ namespace Core.DataAccess.Constants
     }
 
 }
-
 
 /*
             //that's not necessary now

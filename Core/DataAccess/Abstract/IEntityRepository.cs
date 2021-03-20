@@ -10,11 +10,11 @@ namespace Core.DataAccess.Abstract
 {
     public interface IEntityRepository<T> where T : class, IEntity
     {
-        Task<Result> Add(T entity);
+        Task<IResult> Add(T entity);
 
-        Task<Result> Update(T entity);
+        Task<IResult> Update(T entity);
 
-        Task<Result> Delete(T entity);
+        Task<IResult> Delete(T entity);
 
         Task<IDataResult<List<T>>> GetAll();
 

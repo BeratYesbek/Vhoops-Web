@@ -23,7 +23,7 @@ namespace Core.DataAccess.Concrete
             FirebaseConstants.RunFirebase();
         }
 
-        public async Task<Result> Add(User entity)
+        public async Task<IResult> Add(User entity)
         {
             FirestoreDb database = FirestoreDb.Create(FirebaseConstants.DATABASE);
 
@@ -45,7 +45,7 @@ namespace Core.DataAccess.Concrete
             return new ErrorResult();
         }
 
-        public async Task<Result> Delete(User entity)
+        public async Task<IResult> Delete(User entity)
         {
             throw new NotImplementedException();
 
@@ -57,7 +57,7 @@ namespace Core.DataAccess.Concrete
         }
 
 
-        public async Task<Result> Update(User entity)
+        public async Task<IResult> Update(User entity)
         {
             FirestoreDb database = FirestoreDb.Create(FirebaseConstants.DATABASE);
 
@@ -75,7 +75,7 @@ namespace Core.DataAccess.Concrete
 
         }
 
-        public async Task<Result> CreateUser(User entity)
+        public async Task<IResult> CreateUser(User entity)
         {
             UserRecordArgs args = new UserRecordArgs()
             {
@@ -94,7 +94,7 @@ namespace Core.DataAccess.Concrete
             return new ErrorResult();
         }
 
-        public async Task<Result> LoginUser(User entity)
+        public async Task<IResult> LoginUser(User entity)
         {
 
             throw new NotImplementedException();
@@ -132,7 +132,7 @@ namespace Core.DataAccess.Concrete
 
         }
 
-        public async Task<Result> UploadProfileImage(object profileImage)
+        public async Task<IResult> UploadProfileImage(object profileImage)
         {
 
             var file = File.Open(@"C:\Users\berat\Pictures\berat.jpg", FileMode.Open);
@@ -156,7 +156,7 @@ namespace Core.DataAccess.Concrete
 
         }
 
-        public async Task<Result> UpdateProfileImage(object profileImage)
+        public async Task<IResult> UpdateProfileImage(object profileImage)
         {
             // here is have to change later
             var file = File.Open(@"C:\Users\berat\Pictures\berat.jpg", FileMode.Open);
