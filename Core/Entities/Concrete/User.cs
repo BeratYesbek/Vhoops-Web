@@ -16,6 +16,7 @@ namespace Core.Entities.Concrete
         {
 
         }
+        public User():base() { }
 
         public Uri ProfileImage { get;}
     }
