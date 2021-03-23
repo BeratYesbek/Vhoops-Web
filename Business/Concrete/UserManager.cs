@@ -28,7 +28,13 @@ namespace Business.Concrete
         [ValidationAspect(typeof(UserValidator))]
         public async Task<IResult> Add(User entity)
         {
-
+            //userName veri tabanında var mı diye kontrol eder async method olduğunan dolayı Businessrules verilemez
+            var userNameResult = CheckUserName(entity.UserName);
+            //eğer gelen sonuç true ise demekki veri tabanında kayıt mevuct eğer değilse veri tabanında kayıt mevcut değil
+            if (userNameResult.Result.Success)
+            {
+                return new ErrorResult(userNameResult.Result.Message);
+            }
             IResult result = BusinessRules.Run(CheckSpecialChar(entity.Password), CheckIfCorrectEmail(entity.Email));
             if (result != null)
             {
@@ -73,9 +79,9 @@ namespace Business.Concrete
         [ValidationAspect(typeof(UserValidator))]
         public async Task<IResult> CreateUser(User entity)
         {
-            await _userDal.CreateUser(entity);
+            var result = await _userDal.CreateUser(entity);
 
-            return new SuccessResult();
+            return result;
         }
 
         public async Task<IDataResult<List<User>>> GetAll()
@@ -125,6 +131,16 @@ namespace Business.Concrete
             }
         }
 
+        private async Task<IResult> CheckUserName(string userName)
+        {
+            var result = await _userDal.GetByUserName(userName);
+            if (result.Success)
+            {
+                return new SuccessResult("Kullanıcı adı mevcut.");
+            }
+            return new ErrorResult();
+        }
+
         private IResult CheckIfCorrectEmail(string email)
         {
             var isEmail = @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
@@ -140,6 +156,10 @@ namespace Business.Concrete
 
         }
 
+        public Task<IDataResult<User>> GetByUserName(string userName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

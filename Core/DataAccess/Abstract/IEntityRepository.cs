@@ -20,6 +20,8 @@ namespace Core.DataAccess.Abstract
 
         Task<IDataResult<T>> GetById(string id);
 
+        Task<IDataResult<T>> GetByUserName(string userName);
+
 
 
     }

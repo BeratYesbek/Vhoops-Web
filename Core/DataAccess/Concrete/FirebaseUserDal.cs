@@ -7,6 +7,7 @@ using Core.Utilities.Result.Concrete;
 using Firebase.Storage;
 using FirebaseAdmin.Auth;
 using Google.Cloud.Firestore;
+using Google.Cloud.Firestore.V1;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -173,6 +174,34 @@ namespace Core.DataAccess.Concrete
 
             }
             return new ErrorResult();
+        }
+
+        public async Task<IDataResult<User>> GetByUserName(string userName)
+        {
+            FirestoreDb firestoreDb = FirestoreDb.Create(FirebaseConstants.DATABASE);
+            Query userQuery = firestoreDb.Collection(FirebaseConstants.USER_COLLECTION).WhereEqualTo("UserName", userName);
+            QuerySnapshot userSnapshots = await userQuery.GetSnapshotAsync();
+
+            User user = null;
+
+            foreach (DocumentSnapshot document in userSnapshots.Documents)
+            {
+                Dictionary<string, object> data = document.ToDictionary();
+
+                string firstName = data["FirstName"].ToString();
+                string lastName = data["LastName"].ToString();
+                string email = data["Email"].ToString();
+                string userID = data["UserID"].ToString();
+                string _userName = data["UserName"].ToString();
+
+                user = new User(firstName,lastName,email,"",_userName,userID,null);
+
+            }
+            if (user != null)
+            {
+                return new SuccessDataResult<User>(user);
+            }
+            return new ErrorDataResult<User>(user);
         }
     }
 }
