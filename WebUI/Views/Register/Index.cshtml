@@ -27,7 +27,7 @@
                     <!-- <img src="../vhoops/Kirpilmislar/3.png" alt=""/> -->
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 signup_section">
-                    <form method="post" class="needs-validation"  novalidate>
+                    <form method="post" class="needs-validation" novalidate>
                         <div id="spinner" class="spinner-border text-primary" role="status" style="visibility:hidden">
                             <span class="sr-only">Loading...</span>
                         </div>
@@ -43,6 +43,9 @@
                             <input type="text" class="form-control" name="LastName" placeholder="Soyad" required>
                         </div>
                         <div class="form-row">
+                            <input type="text" class="form-control" name="UserName" placeholder="Kullanıcı Adı" required>
+                        </div>
+                        <div class="form-row">
                             <input type="email" class="form-control" name="Email" id="mail" placeholder="Eposta" required>
                         </div>
                         <div class="form-row">
@@ -56,7 +59,7 @@
                             <label class="form-check-label" for="login_check">Kabul ediyorum</label>
                         </div>
                         <button type="submit" onclick="runSpinner()" class="btn btn-primary">Kayıt Ol</button>
-                        <button type="submit" class="btn btn-outline-primary">Giriş Yap <a href="login.html"></a></button>
+                        <a type="submit" class="btn btn-outline-primary">Giriş Yap </a>
                         <p id="privacyTerms" class="small_text">
                             Kaydolarak <a href="#">kullanım şartlarımızı</a>, <a href="#">gizlilik politikamızı</a>, <a href="#">ve çerezleri kabul etmiş olursunuz.</a>.
                         </p>

@@ -561,3 +561,8 @@ body {
 .custom-select.is-valid, .form-control.is-valid, .was-validated .custom-select:valid, .was-validated .form-control:valid {
   border-color: #a2a2a2;
 }
+
+.form-check .forgot-password {
+    float: right;
+    margin-right: 42%;
+}
