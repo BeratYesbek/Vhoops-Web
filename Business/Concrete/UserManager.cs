@@ -113,7 +113,10 @@ namespace Business.Concrete
             await _userDal.GetById(manager.UserID);
             return new SuccessDataResult<User>();
         }
-
+        public Task<IDataResult<User>> GetByUserName(string userName)
+        {
+            throw new NotImplementedException();
+        }
 
 
         //<---------------  BusinessRules  --------------->
@@ -136,7 +139,7 @@ namespace Business.Concrete
             var result = await _userDal.GetByUserName(userName);
             if (result.Success)
             {
-                return new SuccessResult("Kullanıcı adı mevcut.");
+                return new SuccessResult(Messages.UsernameAvailableAlready);
             }
             return new ErrorResult();
         }
@@ -153,13 +156,9 @@ namespace Business.Concrete
             {
                 return new SuccessResult();
             }
-
         }
 
-        public Task<IDataResult<User>> GetByUserName(string userName)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }
 

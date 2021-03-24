@@ -17,12 +17,18 @@ namespace Business.ValiditionRules.FluentValidation
         {
             RuleFor(u => u.FirstName).NotEmpty().Must(CheckIfJustLetters).WithMessage(Messages.CheckIfJustLetters);
             RuleFor(u => u.LastName).NotEmpty().Must(CheckIfJustLetters).WithMessage(Messages.CheckIfJustLetters);
-            RuleFor(u => u.UserName).NotEmpty();
+            RuleFor(u => u.UserName).NotEmpty().Must(CheckIfCharacter).WithMessage(Messages.InUsernameCheckIfCharachter);
             RuleFor(u => u.Password).NotEmpty();
             RuleFor(u => u.Email).NotEmpty();
 
+            RuleFor(u => u.FirstName).MinimumLength(2);
+            RuleFor(u => u.LastName).MinimumLength(2);
+            RuleFor(u => u.Password).MinimumLength(8).WithMessage(Messages.MaxLength); ;
 
-            RuleFor(u => u.Password).MinimumLength(8);
+            RuleFor(u => u.FirstName).MaximumLength(18).WithMessage(Messages.MaxLength);
+            RuleFor(u => u.LastName).MaximumLength(18).WithMessage(Messages.MaxLength);
+            RuleFor(u => u.Password).MaximumLength(18).WithMessage(Messages.MaxLength);
+            RuleFor(u => u.UserName).MaximumLength(12).WithMessage(Messages.InUsernameCheckIfCharachter);
             //RuleFor(u => u.Password).Must(CheckSpecialChar).WithMessage("Şifreniz en az bir özel karakter içermelidir.");
 
 
@@ -43,8 +49,21 @@ namespace Business.ValiditionRules.FluentValidation
 
         private bool CheckIfJustLetters(string name)
         {
-            Regex passwordSymbol = new Regex(@"^[a-zA-Z]*$");
-            if (!passwordSymbol.IsMatch(name))
+            Regex nameSymbol = new Regex(@"^[a-zA-Z]*$");
+            if (!nameSymbol.IsMatch(name))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+        private bool CheckIfCharacter(string username)
+        {
+            Regex usernameCheck = new Regex(@"^(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$");
+            if (!usernameCheck.IsMatch(username))
             {
                 return false;
             }
