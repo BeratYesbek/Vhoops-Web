@@ -11,6 +11,7 @@ namespace Core.DataAccess.Abstract.Firebase
 
     public interface IFirebaseUserDal : IEntityRepository<User>
     {
+        
         Task<IResult> CreateUser(User entity);
 
         Task<IResult> LoginUser(User entity);
@@ -18,5 +19,12 @@ namespace Core.DataAccess.Abstract.Firebase
         Task<IResult> UploadProfileImage(Object profileImage);
 
         Task<IResult> UpdateProfileImage(Object profileImage);
+
+        Task<IDataResult<User>> GetByUserName(string userName);
+
+        Task<IDataResult<User>> GetByEmail(string email);
+        
+       
+
     }
 }

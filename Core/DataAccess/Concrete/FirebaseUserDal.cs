@@ -37,6 +37,7 @@ namespace Core.DataAccess.Concrete
                  { "Email", entity.Email },
 
             };
+
             DocumentReference documentReference = await collection.AddAsync(user);
             if (documentReference != null)
             {
@@ -54,7 +55,33 @@ namespace Core.DataAccess.Concrete
 
         public async Task<IDataResult<List<User>>> GetAll()
         {
-            throw new NotImplementedException();
+            List<User> userList = new List<User>();
+
+            FirestoreDb database = FirestoreDb.Create(FirebaseConstants.DATABASE);
+
+            Query query = database.Collection(FirebaseConstants.USER_COLLECTION);
+            QuerySnapshot userSnapshots = await query.GetSnapshotAsync();
+
+            if (userSnapshots != null)
+            {
+                foreach (DocumentSnapshot document in userSnapshots.Documents)
+                {
+                    Dictionary<string, object> data = document.ToDictionary();
+
+                    string firstName = data["FirstName"].ToString();
+                    string lastName = data["LastName"].ToString();
+                    string email = data["Email"].ToString();
+                    string userID = data["UserID"].ToString();
+                    string _userName = data["UserName"].ToString();
+
+                    userList.Add(new User(firstName, lastName, email, "", _userName, userID, null));
+                }
+                return new SuccessDataResult<List<User>>(userList);
+            }
+            else
+            {
+                return new ErrorDataResult<List<User>>();
+            }
         }
 
 
@@ -62,7 +89,8 @@ namespace Core.DataAccess.Concrete
         {
             FirestoreDb database = FirestoreDb.Create(FirebaseConstants.DATABASE);
 
-            DocumentReference document = database.Collection(FirebaseConstants.USER_COLLECTION).Document(entity.UserID);
+            DocumentReference document = database.Collection(FirebaseConstants.USER_COLLECTION).Document("dpsağkdjuasgdas");
+
             Dictionary<string, object> user = new Dictionary<string, object>
             {
                 {"FirstName",entity.FirstName },
@@ -119,9 +147,17 @@ namespace Core.DataAccess.Concrete
                 string lastName = data["LastName"].ToString();
                 string email = data["Email"].ToString();
                 string userID = data["UserID"].ToString();
+                string userName = data["UserName"].ToString();
+                string profileImage = data["ProfileImage"].ToString();
+                string token = data["Token"].ToString();
+                Uri uriImage;
+                if (profileImage != null)
+                {
+                    uriImage = new Uri(profileImage);
+                }
 
-                user = new User(firstName, lastName, email, "", "");
 
+                user = new User(firstName, lastName, email, "", userName);
 
             }
 
@@ -193,8 +229,15 @@ namespace Core.DataAccess.Concrete
                 string email = data["Email"].ToString();
                 string userID = data["UserID"].ToString();
                 string _userName = data["UserName"].ToString();
+                string profileImage = data["ProfileImage"].ToString();
+                string token = data["Token"].ToString();
+                Uri uriImage;
+                if (profileImage != null)
+                {
+                  uriImage  = new Uri(profileImage);
+                }
 
-                user = new User(firstName,lastName,email,"",_userName,userID,null);
+                user = new User(firstName, lastName, email, "", _userName, userID, null);
 
             }
             if (user != null)
@@ -203,5 +246,42 @@ namespace Core.DataAccess.Concrete
             }
             return new ErrorDataResult<User>(user);
         }
+
+        public async Task<IDataResult<User>> GetByEmail(string email)
+        {
+            FirestoreDb firestoreDb = FirestoreDb.Create(FirebaseConstants.DATABASE);
+            Query userQuery = firestoreDb.Collection(FirebaseConstants.USER_COLLECTION).WhereEqualTo("Email", email);
+            QuerySnapshot userSnapshots = await userQuery.GetSnapshotAsync();
+
+            User user = null;
+
+            foreach (DocumentSnapshot document in userSnapshots.Documents)
+            {
+                Dictionary<string, object> data = document.ToDictionary();
+
+                string firstName = data["FirstName"].ToString();
+                string lastName = data["LastName"].ToString();
+                string _email = data["Email"].ToString();
+                string userID = data["UserID"].ToString();
+                string userName = data["UserName"].ToString();
+                string profileImage = data["ProfileImage"].ToString();
+                string token = data["Token"].ToString();
+                Uri uriImage;
+                if (profileImage != null)
+                {
+                    uriImage = new Uri(profileImage);
+                }
+
+
+                user = new User(firstName, lastName, _email, "", userName, userID, null);
+
+            }
+            if (user != null)
+            {
+                return new SuccessDataResult<User>(user);
+            }
+            return new ErrorDataResult<User>(user);
+        }
+     
     }
 }
