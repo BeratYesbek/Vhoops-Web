@@ -21,7 +21,6 @@ namespace WebUI.Controllers
         {
 
             UserManager usermanager = new UserManager(new UserDal());
-
             var result = await usermanager.Add(user);
             if (result.Success)
             {

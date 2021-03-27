@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
+    font-family: Verdana, Tahoma, sans-serif;
 }
 
 html,
@@ -26,8 +26,7 @@ body {
     border-radius: 5px;
     background-color: #065dad;
     display: grid;
-    grid:
-    'search-container chat-title'71px 'conversation-list chat-message-list'1fr 'general chat-form'80px / 275px 1fr;
+    grid: 'search-container chat-title'71px 'conversation-list chat-message-list'1fr 'general chat-form'80px / 275px 1fr;
     min-width: 1300px;
     max-width: 1200px;
     max-height: 800px;
@@ -53,36 +52,36 @@ body {
     align-items: center;
     padding: 0 20px;
     grid-area: search-container;
-    border-radius: 10px 0 10px 0 ;
+    border-radius: 10px 0 10px 0;
     box-shadow: 0px 1px 3px -1px #000;
     z-index: 1;
 }
 
-#search-container input {
-    outline: none;
-    border-radius: 14px;
-    height: 30px;
-    width: 220px;
-    border: 0;
-    text-align: start;
-    padding-top: 3px;
-    padding-left: 48px;
-    padding-right: 20px;
-    font-size: 1.4rem;
-    background: url('../images/search.png') no-repeat #c0c0c0;
-    background-position: 15px center;
-    background-size: 20px 20px;
-}
+    #search-container input {
+        outline: none;
+        border-radius: 14px;
+        height: 30px;
+        width: 220px;
+        border: 0;
+        text-align: start;
+        padding-top: 3px;
+        padding-left: 48px;
+        padding-right: 20px;
+        font-size: 1.4rem;
+        background: url('../images/search.png') no-repeat #c0c0c0;
+        background-position: 15px center;
+        background-size: 20px 20px;
+    }
 
-#search-container input:hover {
-    width: 222px;
-    border-radius: 16px;
-    transition: 0.2s;
-}
+        #search-container input:hover {
+            width: 222px;
+            border-radius: 16px;
+            transition: 0.2s;
+        }
 
-#search-container input::placeholder {
-    color: #818181;
-}
+        #search-container input::placeholder {
+            color: #818181;
+        }
 
 #conversation-list {
     grid-area: conversation-list;
@@ -90,7 +89,6 @@ body {
 }
 
 .conversation {
-
     position: relative;
     display: grid;
     grid-template-columns: 40px 1fr max-content;
@@ -100,21 +98,22 @@ body {
     padding: 20px 20px 20px 15px;
 }
 
-.conversation.active,
-.conversation:hover {
-    background: #054988;
-}
+    .conversation.active,
+    .conversation:hover {
+        background: #054988;
+    }
 
-.conversation:hover {
-    cursor: pointer;
-}
+    .conversation:hover {
+        cursor: pointer;
+    }
 
-/* profile img */
-.conversation>img {
-    grid-row: span 2;
-    width: 85%;
-    border-radius: 100%;
-}
+    /* profile img */
+    .conversation > img {
+        border: 2px solid rgb(4, 150, 29);
+        grid-row: span 2;
+        width: 103%;
+        border-radius: 100%;
+    }
 
 /* profile name */
 .title-text {
@@ -139,7 +138,7 @@ body {
 
 #general {
     border-radius: 0 10px 0 10px;
-    border: 2px solid #0759a5;
+    border: 2px solid #06539b;
     position: relative;
     z-index: 1;
     display: inline-flex;
@@ -150,26 +149,30 @@ body {
     padding: 0 15px;
 }
 
-#general a img {
-    width: 200%;
-    display: grid;  
-    margin-top: auto;
-    margin-bottom: auto;
-    place-content: center center;
+    #general a img {
+        width: 200%;
+        display: grid;
+        margin-top: auto;
+        margin-bottom: auto;
+        place-content: center center;
+    }
+
+        #general a img:hover {
+            width: 205%;
+            display: grid;
+            place-content: center center;
+            transition: 0.2s;
+            font-size: 3.8rem;
+        }
+
+.chest {
+    margin-left: 170%;
 }
 
-#general a img:hover {
-    width: 205%;
-    display: grid;
-    transition: 0.2s;
-    font-size: 3.8rem;
-}
-.chest{
-   margin-left: 170%;
-}
-.addFriend{
+.addFriend {
     margin-left: 5%;
 }
+
 #chat-title {
     background: #065dad;
 }
@@ -191,30 +194,52 @@ body {
     font-size: 2.0rem;
     padding: 0 20px;
 }
+
 a .chest-badge {
     position: absolute;
     top: 12%;
     left: 42%;
     padding: 5px 10px;
     border-radius: 50%;
-    background: #db330f;
+    background: #f75205;
     transition: 0.3s;
     color: white;
 }
-a .chest-badge:hover {
-    position: absolute;
-    border-radius: 40%;
-}
-#chat-title>img {
+
+    a .chest-badge:hover {
+        position: absolute;
+        border-radius: 40%;
+    }
+
+#chat-title img {
     cursor: pointer;
-    height: 50%;
+    border-radius: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+    border: 2px solid rgb(4, 150, 29);
+    height: 55%;
     transition: 0.3s;
 }
 
-#chat-title>img:hover {
+    #chat-title img:hover {
+        cursor: pointer;
+        transition: 0.3s;
+        height: 52%;
+    }
+
+.person-texting {
     cursor: pointer;
-    height: 51;
+    position: absolute;
+    left: 7%;
+    margin-bottom: 0.18%;
+    font-size: 19px;
+    transition: 0.3s;
 }
+
+    .person-texting:hover {
+        transition: 0.3s;
+        color: rgb(29, 29, 29);
+    }
 
 #chat-message-list {
     position: relative;
@@ -240,7 +265,6 @@ a .chest-badge:hover {
 
 .other-message {
     justify-items: start;
-
 }
 
 .message-text {
@@ -257,7 +281,7 @@ a .chest-badge:hover {
 
 .you-message .message-text {
     /* rgba(204, 88, 17, 1) */
-    background:#db330f ;
+    background: #db330f;
     color: #111;
     border: 0px solid #db330f;
     border-radius: 14px 14px 0 14px;
@@ -283,21 +307,23 @@ a .chest-badge:hover {
 }
 
 .chat-svg {
+    position: relative;
     width: 80%;
+    margin-left: 60%;
     cursor: pointer;
 }
 
-.chat-svg #chat-form img #paperclip {
-    position: relative;
-}
+    .chat-svg #chat-form img #paperclip {
+        position: absolute;
+    }
 
-.chat-svg #chat-form img #smiley {
-    position: relative;
-}
+    .chat-svg #chat-form img #smiley {
+        position: absolute;
+    }
 
-.chat-svg #chat-form img #plus {
-    position: relative;
-}
+    .chat-svg #chat-form img #plus {
+        position: absolute;
+    }
 
 #smiley:hover,
 #paperclip:hover {
@@ -318,19 +344,20 @@ a .chest-badge:hover {
     color: #000;
     font-size: 1.5rem;
 }
-#chat-form input:hover {
-    width: 80.1%;
-    height: 42px;
-    outline: none;
-    padding: 15px;
-    border-radius: 30px;
-    background-color: rgb(185, 185, 185);
-    border: 0px solid rgb(185, 185, 185);
-    transition: 0.3s;
-    color: #000;
-    font-size: 1.5rem;
 
-}
+    #chat-form input:hover {
+        width: 80.1%;
+        height: 42px;
+        outline: none;
+        padding: 15px;
+        border-radius: 30px;
+        background-color: rgb(185, 185, 185);
+        border: 0px solid rgb(185, 185, 185);
+        transition: 0.3s;
+        color: #000;
+        font-size: 1.5rem;
+    }
+
 .ForImg {
     background-image: url(../images/send.svg);
     background-size: 5%;
@@ -339,6 +366,7 @@ a .chest-badge:hover {
     background-position-x: 98%;
     cursor: pointer;
 }
+
 ::-webkit-scrollbar {
     display: none;
 }
@@ -348,7 +376,6 @@ a .chest-badge:hover {
 }
 
 .three-dots:after {
-
     cursor: pointer;
     color: #000;
     content: '\2807';
@@ -361,22 +388,21 @@ a {
     color: white;
 }
 
-a div {
-    margin-top: 15%;
-    padding: 2px;
-    font-size: 15px;
-    text-align: center;
-}
+    a div {
+        margin-top: 15%;
+        padding: 2px;
+        font-size: 15px;
+        text-align: center;
+    }
 
-a div:hover {
-    margin-top: 15%;
-    font-size: 16px;
-    padding: 2px;
-    text-align: center;
-}
+        a div:hover {
+            margin-top: 15%;
+            font-size: 16px;
+            padding: 2px;
+            text-align: center;
+        }
 
 .dropdown {
-
     position: absolute;
     margin-top: 1%;
     right: 6%;
@@ -394,12 +420,12 @@ a div:hover {
     outline: none;
 }
 
-.dropdown-container:focus .dropdown {
-    opacity: 1;
-    z-index: 100;
-    max-height: 100vh;
-    transition: 0.2s, 0.2s, 0.2s;
-}
+    .dropdown-container:focus .dropdown {
+        opacity: 1;
+        z-index: 100;
+        max-height: 100vh;
+        transition: 0.2s, 0.2s, 0.2s;
+    }
 
 /* #3086D9 */
 /* bildirim buttonu */
@@ -415,43 +441,70 @@ a div:hover {
 
 
 
-#chat-message-list  .sidepanel  {
+#chat-message-list .sidepanel {
     position: absolute;
+    width: 0;
     z-index: 1;
+    border-radius: 50px 0 0 50px;
     max-height: 100%;
     max-height: 100%;
     height: 100%;
     top: 0.01%;
     right: 0.01%;
-    background-color: #db330f;
+    background: rgb(6, 93, 173);
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
-  }
-  
-  .sidepanel a {
+    /* #db330f */
+}
+
+.sidepanel a {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-weight: 300;
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
-    color: #818181;
+    color: #000000;
     display: block;
     transition: 0.3s;
-  }
-  
-  .sidepanel a:hover {
-    color: #f1f1f1;
-  }
-  
-  .sidepanel .closebtn {
+}
+
+.all-name {
+    font-size: 20px;
+}
+
+.username {
+    font-size: 17px;
+}
+
+.about {
+    font-size: 15px;
+}
+
+.sidepanel .closebtn {
     position: absolute;
     top: 0;
     right: 25px;
     font-size: 36px;
-  }
-  .sidepanel img {
-    margin-left: 5%;
+}
+
+.sidepanel img {
+    margin-top: 5%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 5%;
     height: 20%;
     cursor: pointer;
     display: block;
     transition: 0.3s;
-  }
+}
+
+hr {
+    margin-top: 5%;
+    border: 2px solid rgb(73, 128, 179);
+    border-radius: 80px;
+    background-color: rgb(73, 128, 179);
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}

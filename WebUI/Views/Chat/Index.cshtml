@@ -1,4 +1,5 @@
-﻿<html lang="en">
+﻿<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -13,11 +14,13 @@
     <div id="chat-container">
         <div id="search-container">
             <input type="text" maxlength="18" placeholder="Arama" />
+
         </div>
+        @*Mesaj listesi*@
         <div id="conversation-list">
 
             <div class="conversation ">
-                <img src="~/images/profile.png" alt="Darly Duckmanton">
+                <img src="~/images/profile.png" alt="">
                 <div class="title-text">
                     <span class="badge">3</span>
                     Kerem Sarı
@@ -30,7 +33,7 @@
                 </div>
             </div>
             <div class="conversation ">
-                <img src="~/images/profile.png" alt="Darly Duckmanton">
+                <img src="~/images/profile.png" alt="">
                 <div class="title-text">
                     Berat Yeşbek
                 </div>
@@ -42,7 +45,7 @@
                 </div>
             </div>
             <div class="conversation ">
-                <img src="~/images/profile.png" alt="Darly Duckmanton">
+                <img src="~/images/profile.png" alt="">
                 <div class="title-text">
                     Kerem Sarı
                 </div>
@@ -54,7 +57,7 @@
                 </div>
             </div>
             <div class="conversation ">
-                <img src="~/images/profile.png" alt="Darly Duckmanton">
+                <img src="~/images/profile.png" alt="">
                 <div class="title-text">
                     Kerem Sarı
                 </div>
@@ -66,7 +69,7 @@
                 </div>
             </div>
             <div class="conversation ">
-                <img src="~/images/profile.png" alt="Darly Duckmanton">
+                <img src="~/images/profile.png" alt="">
                 <div class="title-text">
                     Kerem Sarı
                 </div>
@@ -78,7 +81,7 @@
                 </div>
             </div>
             <div class="conversation ">
-                <img src="~/images/profile.png" alt="Darly Duckmanton">
+                <img src="~/images/profile.png" alt="">
                 <div class="title-text">
                     Kerem Sarı
                 </div>
@@ -90,7 +93,7 @@
                 </div>
             </div>
             <div class="conversation ">
-                <img src="~/images/profile.png" alt="Darly Duckmanton">
+                <img src="~/images/profile.png" alt="">
                 <div class="title-text">
                     Kerem Sarı
                 </div>
@@ -102,7 +105,7 @@
                 </div>
             </div>
             <div class="conversation ">
-                <img src="~/images/profile.png" alt="Darly Duckmanton">
+                <img src="~/images/profile.png" alt="">
                 <div class="title-text">
                     Kerem Sarı
                 </div>
@@ -114,7 +117,7 @@
                 </div>
             </div>
             <div class="conversation ">
-                <img src="~/images/profile.png" alt="Darly Duckmanton">
+                <img src="~/images/profile.png" alt="">
                 <div class="title-text">
                     Kerem Sarı
                 </div>
@@ -126,7 +129,7 @@
                 </div>
             </div>
             <div class="conversation ">
-                <img src="~/images/profile.png" alt="Darly Duckmanton">
+                <img src="~/images/profile.png" alt="">
                 <div class="title-text">
                     Kerem Sarı
                 </div>
@@ -138,7 +141,7 @@
                 </div>
             </div>
             <div class="conversation ">
-                <img src="~/images/profile.png" alt="Darly Duckmanton">
+                <img src="~/images/profile.png" alt="">
                 <div class="title-text">
                     Kerem Sarı
                 </div>
@@ -152,6 +155,7 @@
 
         </div>
 
+        @*genel bilgilerin olduğu kısım*@
         <div id="general">
             <a href="#"><img class="addFriend" src="~/images/black-addFriend.svg" alt=""></a>
             <a href="#">
@@ -159,13 +163,17 @@
                 <img class="chest" src="~/images/black-chest.svg" alt="">
             </a>
         </div>
+        @*mesajlaşma kutusunun üstündeki alan*@
         <div id="chat-title">
-            <span>Sohbet</span>
+            <img src="~/images/profile.png" ondblclick="closeNav()" onclick="openNav()" alt="">
+            <div class="person-texting" ondblclick="closeNav()" onclick="openNav()">Kerem Sarı</div>
+
+            @*mesajlaşma kutusunun üstünde üç nokta simgesi*@
             <div class="dropdown-container" id="dropdown" tabindex="-1">
                 <div class="three-dots" onclick="closeNav()"></div>
                 <div class="dropdown">
                     <a href="#">
-                        <div onclick="openNav()">Profil</div>
+                        <div>Profil</div>
                     </a>
                     <a href="#">
                         <div>Ayarlar</div>
@@ -176,15 +184,10 @@
                 </div>
             </div>
         </div>
+        @*mesaj alanın içi*@ 
         <div id="chat-message-list">
-            <div id="mySidepanel" class="sidepanel">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-                <img src="~/images/profile.png" alt="Darly Duckmanton">
-                <a href="#">Kerem Sarı</a>
-                <a href="#"></a>
-                <a href="#"></a>
-                <a href="#"></a>
-            </div>
+            @await Html.PartialAsync("_SidePanel")
+            @*sender message*@
             <div class="message-row you-message">
                 <div class="message-text">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae natus quo
@@ -192,6 +195,8 @@
                 </div>
                 <div class="message-time">12:33</div>
             </div>
+
+            @*receiver message*@
             <div class="message-row other-message">
                 <div class="message-text">
                     Kerem sen çok güzel bir insansın ya. Lorem ipsum dolor sit. Lorem ipsum dolor
@@ -200,6 +205,7 @@
                 <div class="message-time">12:33</div>
             </div>
         </div>
+        @*mesaj gönderme alanı*@
         <div id="chat-form">
             <div class="chat-svg">
                 <img src="~/images/paperclip4.svg" alt="Add Attachment" id="paperclip" />
@@ -208,20 +214,14 @@
             </div>
             <div class="input-group">
                 <div class="input-group-append">
-                    <input type="text" id="MessageBox" maxlength="75" class="ForImg " placeholder="Bir mesaj yaz." />
+                    <input type="text" id="MessageBox" ondblclick="closeNav()" maxlength="75" class="ForImg " placeholder="Bir mesaj yaz." />
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        function openNav() {
-            document.getElementById("mySidepanel").style.width = "25%";
-        }
 
-        function closeNav() {
-            document.getElementById("mySidepanel").style.width = "0";
-        }
-    </script>
-    <script src="~/js/chatMain.js"></script>
-</body>   
+    <script src="~/chatMain.js"></script>
+
+</body>
+
 </html>
