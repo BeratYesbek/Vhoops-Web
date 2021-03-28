@@ -7,6 +7,7 @@ namespace Core.Utilities.Business
 {
     public class BusinessRules
     {
+        // custom business rules is run by this class and method
         public static IResult Run(params IResult[] logics)
         {
             foreach (var logic in logics)

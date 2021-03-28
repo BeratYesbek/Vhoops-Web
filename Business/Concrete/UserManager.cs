@@ -29,6 +29,8 @@ namespace Business.Concrete
         public async Task<IResult> Add(User entity)
         {
             //userName veri tabanında var mı diye kontrol eder async method olduğunan dolayı Businessrules verilemez
+
+            //first with this method is checked in database whether username exist in there or not
             var userNameResult = CheckUserName(entity.UserName);
             //eğer gelen sonuç true ise demekki veri tabanında kayıt mevuct eğer değilse veri tabanında kayıt mevcut değil
             if (userNameResult.Result.Success)
@@ -72,8 +74,7 @@ namespace Business.Concrete
         [ValidationAspect(typeof(UserValidator))]
         public async Task<IResult> UserLogin(User entity)
         {
-            await _userDal.LoginUser(entity);
-            return new SuccessResult();
+            throw new NotImplementedException();
         }
 
         [ValidationAspect(typeof(UserValidator))]
@@ -119,10 +120,11 @@ namespace Business.Concrete
         }
 
 
-        //<---------------  BusinessRules  --------------->
+        /* <---------------  BusinessRules  ---------------> */
 
         private IResult CheckSpecialChar(string password)
         {
+            //in here password must has the least one special character for exmaple ? !
             Regex passwordSymbol = new Regex(@"[^a-zA-Z0-9]");
             if (!passwordSymbol.IsMatch(password))
             {
@@ -136,6 +138,7 @@ namespace Business.Concrete
 
         private async Task<IResult> CheckUserName(string userName)
         {
+            /* <------ purpose of this method if you added a new user or update user,At database is checked whether username exist in there or not ----->  */
             var result = await _userDal.GetByUserName(userName);
             if (result.Success)
             {

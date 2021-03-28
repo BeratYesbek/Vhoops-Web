@@ -16,19 +16,21 @@ namespace Core.DataAccess.Constants
     public static class FirebaseConstants
     {
 
-
+        /*<<<<---------Database Collection----------->>>>*/
         public static string USER_COLLECTION = "Users";
         public static string CHAT_COLLECTION = "Chats";
 
+        /*<<<<<------------Database properties-------->>>>>*/
         public static string DATABASE = "vhoops-a2dce";
         public static string STORAGE_PATH = "vhoops-a2dce.appspot.com";
+        public static string API_URL = "AIzaSyAEDDiRGZEpFDLluvE9jpnCw9jLI5UjqmQ";
 
 
         public static void RunFirebase()
         {
             try
             {
-                // here is working to cloud firebase
+                //  working cloud firebase and firebaseAuth
                 string path = AppDomain.CurrentDomain.BaseDirectory + @"vhoops-a2dce-firebase-adminsdk-lp79g-52f9a01b70.json";
 
                 FirebaseApp.Create(new AppOptions()
@@ -49,11 +51,4 @@ namespace Core.DataAccess.Constants
 
 }
 
-/*
-            //that's not necessary now
-            FirebaseApp.Create(new AppOptions()
-            {
-                Credential = GoogleCredential.FromFile("C:/Users/berat/source/repos/Vhoops_netCore/Core/vhoops-a2dce-firebase-adminsdk-lp79g-52f9a01b70.json"),
-            });
 
-            */

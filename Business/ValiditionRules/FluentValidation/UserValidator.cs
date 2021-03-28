@@ -62,6 +62,7 @@ namespace Business.ValiditionRules.FluentValidation
         }
         private bool CheckIfCharacter(string username)
         {
+            /* <-------- username must not be content any special character --------> */
             Regex usernameCheck = new Regex(@"^(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$");
             if (!usernameCheck.IsMatch(username))
             {

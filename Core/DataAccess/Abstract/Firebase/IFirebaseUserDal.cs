@@ -14,8 +14,6 @@ namespace Core.DataAccess.Abstract.Firebase
         
         Task<IResult> CreateUser(User entity);
 
-        Task<IResult> LoginUser(User entity);
-
         Task<IResult> UploadProfileImage(Object profileImage);
 
         Task<IResult> UpdateProfileImage(Object profileImage);

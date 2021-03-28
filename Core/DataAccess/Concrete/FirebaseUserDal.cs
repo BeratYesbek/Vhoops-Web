@@ -1,4 +1,4 @@
-﻿using Core.DataAccess.Abstract;
+﻿
 using Core.DataAccess.Abstract.Firebase;
 using Core.DataAccess.Constants;
 using Core.Entities.Concrete;
@@ -7,15 +7,14 @@ using Core.Utilities.Result.Concrete;
 using Firebase.Storage;
 using FirebaseAdmin.Auth;
 using Google.Cloud.Firestore;
-using Google.Cloud.Firestore.V1;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
 namespace Core.DataAccess.Concrete
 {
+   
     public class FirebaseUserDal : IFirebaseUserDal
     {
 
@@ -23,6 +22,7 @@ namespace Core.DataAccess.Concrete
         {
             FirebaseConstants.RunFirebase();
         }
+        
 
         public async Task<IResult> Add(User entity)
         {
@@ -114,7 +114,7 @@ namespace Core.DataAccess.Concrete
                 DisplayName = entity.FirstName + " " + entity.LastName,
                 Disabled = false,
             };
-            UserRecord userRecord = await FirebaseAuth.DefaultInstance.CreateUserAsync(args);
+            UserRecord userRecord = await FirebaseAdmin.Auth.FirebaseAuth.DefaultInstance.CreateUserAsync(args);
 
             if (userRecord != null)
             {
@@ -122,14 +122,7 @@ namespace Core.DataAccess.Concrete
             }
             return new ErrorResult();
         }
-
-        public async Task<IResult> LoginUser(User entity)
-        {
-
-            throw new NotImplementedException();
-        }
-
-
+        
 
         public async Task<IDataResult<User>> GetById(string Id)
         {
@@ -234,7 +227,7 @@ namespace Core.DataAccess.Concrete
                 Uri uriImage;
                 if (profileImage != null)
                 {
-                  uriImage  = new Uri(profileImage);
+                    uriImage = new Uri(profileImage);
                 }
 
                 user = new User(firstName, lastName, email, "", _userName, userID, null);
@@ -282,6 +275,5 @@ namespace Core.DataAccess.Concrete
             }
             return new ErrorDataResult<User>(user);
         }
-     
     }
 }
