@@ -1,0 +1,141 @@
+﻿.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 50px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #3086D9;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 60%;
+    height: 78%;
+    border-radius: 40px;
+    margin-top: 70px;
+    margin-right: 205px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+.update-form {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.image-content {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    margin-left: 30%;
+    position: relative;
+    margin-top: -7%;
+    background-color: #3086D9;
+}
+
+    .image-content img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: auto;
+        margin-left: 5%;
+        margin-top: 5%;
+    }
+
+.form-control {
+    padding: 1.5%;
+    width: 55%;
+    margin-top: 5%;
+    border-radius: 10px;
+    background-color: rgb(211, 211, 211);
+    color: rgb(0, 0, 0);
+    outline-style: none;
+}
+
+.submit-button {
+    margin-top: 3%;
+    width: 200px;
+    height: 35px;
+    background-color: #db330f;
+    color: #fff;
+    border-radius: 10px;
+    outline: none;
+    outline-style: none;
+    transition: all 0.5s;
+}
+
+    .submit-button:hover {
+        color: rgb(218, 218, 218);
+        background-color: #ae2c0e;
+        outline: none;
+        outline-style: none;
+    }
+
+#change-photo {
+    margin-top: 0.5%;
+    width: 80px;
+    height: 30px;
+    background-color: #db330f;
+    color: #fff;
+    border-radius: 10px;
+    outline: none;
+    outline-style: none;
+    transition: all 0.5s;
+    font-size: 12px;
+    padding-left: 5px;
+}
+
+    #change-photo:hover {
+        background-color: #ae2c0e;
+        outline: none;
+        color: rgb(218, 218, 218);
+        outline-style: none;
+    }
