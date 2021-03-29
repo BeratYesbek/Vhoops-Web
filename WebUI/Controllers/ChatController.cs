@@ -12,5 +12,10 @@ namespace WebUI.Controllers
         {
             return View();
         }
+
+        public IActionResult ChatPage()
+        {
+            return View();
+        }
     }
 }
