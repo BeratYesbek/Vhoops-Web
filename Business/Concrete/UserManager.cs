@@ -118,6 +118,12 @@ namespace Business.Concrete
         {
             throw new NotImplementedException();
         }
+        public async Task<IDataResult<User>> GetByEmail(string email)
+        {
+            var result =  await _userDal.GetByEmail(email);
+            return result;
+
+        }
 
 
         /* <---------------  BusinessRules  ---------------> */
@@ -161,7 +167,7 @@ namespace Business.Concrete
             }
         }
 
-
+      
     }
 }
 

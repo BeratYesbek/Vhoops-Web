@@ -251,7 +251,7 @@ namespace Core.DataAccess.Concrete
             foreach (DocumentSnapshot document in userSnapshots.Documents)
             {
                 Dictionary<string, object> data = document.ToDictionary();
-
+                string documentId = document.Id;
                 string firstName = data["FirstName"].ToString();
                 string lastName = data["LastName"].ToString();
                 string _email = data["Email"].ToString();
@@ -259,14 +259,14 @@ namespace Core.DataAccess.Concrete
                 string userName = data["UserName"].ToString();
                 string profileImage = data["ProfileImage"].ToString();
                 string token = data["Token"].ToString();
-                Uri uriImage;
+                Uri uriImage = null;
                 if (profileImage != null)
                 {
                     uriImage = new Uri(profileImage);
                 }
 
 
-                user = new User(firstName, lastName, _email, "", userName, userID, null);
+                user = new User(firstName, lastName, _email, "", userName, userID, uriImage);
 
             }
             if (user != null)

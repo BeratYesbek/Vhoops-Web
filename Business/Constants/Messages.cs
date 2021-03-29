@@ -21,6 +21,7 @@ namespace Business.Constants
         public static string a5 = "Sadece harf içermelidir.";
         public static string a6 = "Sadece harf içermelidir.";
         public static string a7 = "Sadece harf içermelidir.";
+        public static string LOGIN_FAILED_MESSAGE = "Email veya şifre hatalı";
 
     }
 }

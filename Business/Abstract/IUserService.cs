@@ -10,10 +10,13 @@ namespace Business.Abstract
 {
     public interface IUserService : IServiceRepository<User>
     {
-        Task<IResult> UserLogin(User manager);
-        Task<IResult> CreateUser(User manager);
-        Task<IResult> UpdateProfileImage(User manager);
-        Task<IResult> UploadProfileImage(User manager);
-        Task<IDataResult<User>> GetProfileImage(User manager);
+        Task<IResult> UserLogin(User user);
+        Task<IResult> CreateUser(User user);
+        Task<IResult> UpdateProfileImage(User user);
+        Task<IResult> UploadProfileImage(User user);
+        Task<IDataResult<User>> GetProfileImage(User user);
+        Task<IDataResult<User>> GetByEmail(string email);
+
+
     }
 }

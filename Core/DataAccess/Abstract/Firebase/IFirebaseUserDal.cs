@@ -21,7 +21,6 @@ namespace Core.DataAccess.Abstract.Firebase
         Task<IDataResult<User>> GetByUserName(string userName);
 
         Task<IDataResult<User>> GetByEmail(string email);
-        
        
 
     }
