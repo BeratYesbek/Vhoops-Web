@@ -3,7 +3,7 @@
 
 <div id="myProfileSidepanel" class="myProfilesidepanel">
     <a href="javascript:void(0)" class="closebtn" onclick="closeMyNav()">×</a>
-    <img src="~/images/profile.png" alt="">
+    <img src="@ViewBag.Image" alt="">
     <a class="all-name" href="#">Kerem Sarı</a>
     <hr class="mySideProfile-hr">
     <a class="username" href="#">krmsari</a>
@@ -15,29 +15,30 @@
 
 <div id="myModal" class="modal">
     <div class="modal-content">
+        <a href="javascript:void(0)" class="my-profile-update close" onclick="closeNav()">×</a>
         <div class="image-content">
-            <img src="~/images/profile.png">
+            <img src="@ViewBag.Image">
             <button id="change-photo"><i class="fas fa-images">Değiştir</i></button>
         </div>
         <form class="update-form">
             <div class="form-group">
-                <input placeholder="Ad" type="text" class="form-control" id="exampleInputEmail1"
+                <input placeholder="Ad" type="text" maxlength="18" class="form-control" id="exampleInputEmail1"
                        aria-describedby="emailHelp">
             </div>
             <div class="form-group">
-                <input placeholder="Soyad" type="text" class="form-control" id="exampleInputEmail1"
+                <input placeholder="Soyad" type="text" maxlength="18" class="form-control" id="exampleInputEmail1"
                        aria-describedby="emailHelp">
             </div>
             <div class="form-group">
-                <input placeholder="Kullanıcı Adı" type="text" class="form-control" id="exampleInputEmail1"
+                <input placeholder="Kullanıcı Adı" maxlength="12" type="text" class="form-control" id="exampleInputEmail1"
                        aria-describedby="emailHelp">
             </div>
             <div class="form-group">
-                <input placeholder="Eposta" type="text" class="form-control" id="exampleInputEmail1"
+                <input placeholder="Eposta" type="text" maxlength="28" class="form-control" id="exampleInputEmail1"
                        aria-describedby="emailHelp">
             </div>
             <div class="form-group">
-                <textarea placeholder="Hakkında" class="form-control" rows="3"></textarea>
+                <textarea placeholder="Hakkında" class="form-control" maxlength="30"></textarea>
             </div>
             <div>
                 <button class="submit-button">Güncelle</button>

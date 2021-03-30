@@ -170,8 +170,11 @@ body {
 }
 
 .myProfile {
-    position: absolute;
-    left: 75%;
+    width: 150px;
+    height: 150px;
+    position: relative;
+    left: 57%;
+    margin-top: 38%;
 }
 
 .addFriend {
@@ -507,7 +510,9 @@ a {
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 5%;
-    height: 20%;
+    border-radius:50%;
+    height: 135px;
+    width:135px;
     cursor: pointer;
     display: block;
     transition: 0.3s;
