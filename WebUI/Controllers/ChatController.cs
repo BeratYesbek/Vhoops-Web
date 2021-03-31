@@ -22,6 +22,7 @@ namespace WebUI.Controllers
             User user = result.Data;
             ViewBag.Image = user.ProfileImage;
             return View();
+
         }
 
         public IActionResult ChatPage()
