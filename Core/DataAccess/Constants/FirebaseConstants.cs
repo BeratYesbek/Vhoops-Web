@@ -43,7 +43,7 @@ namespace Core.DataAccess.Constants
             }
             catch (Exception e)
             {
-
+                Console.WriteLine(e.Message);
             }
         }
 

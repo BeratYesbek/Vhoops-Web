@@ -137,6 +137,7 @@ body {
 }
 
 #general {
+    cursor:pointer;
     border-radius: 0 10px 0 10px;
     border: 2px solid #06539b;
     position: relative;
@@ -154,27 +155,25 @@ body {
         display: grid;
         margin-top: auto;
         margin-bottom: auto;
+        transition: all 0.2s;
         place-content: center center;
     }
 
         #general a img:hover {
-            width: 205%;
-            display: grid;
-            place-content: center center;
-            transition: 0.2s;
+            width: 208%;
             font-size: 3.8rem;
         }
 
 .chest {
-    margin-left: 170%;
+    margin-left: 175%;
 }
 
-.myProfile {
-    width: 150px;
-    height: 150px;
+#general .myProfile img {
+    width: 53px;
+    height: 53px;
+    border-radius: 50%;
     position: relative;
-    left: 57%;
-    margin-top: 38%;
+    margin-left: 280%;
 }
 
 .addFriend {
@@ -506,13 +505,13 @@ a {
 }
 
 .myProfilesidepanel img {
-    margin-top: 5%;
+    margin-top: 1%;
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 5%;
     border-radius:50%;
-    height: 135px;
-    width:135px;
+    height: 110px;
+    width:110px;
     cursor: pointer;
     display: block;
     transition: 0.3s;
@@ -520,10 +519,16 @@ a {
 
 .update-button {
     margin-top: 5%;
+    margin-left:5%;
     border-radius: 40px;
     background-color: #06539b;
     outline-style: none;
     width: 70%;
+    padding:2.5%;
+}
+.update-button:hover {
+    background-color: #095093;
+    width: 70.30%;
 }
 
 .mySideProfile-hr {
