@@ -10,24 +10,21 @@ using System.Threading.Tasks;
 
 namespace WebUI.Controllers
 {
-  
+
 
     public class ChatController : Controller
     {
-        public async Task<IActionResult>  Index()
+        User _user;
+        public async Task<IActionResult> Index()
         {
             var email = TempData["Email"];
             UserManager userManager = new UserManager(new UserDal());
             var result = await userManager.GetByEmail(email.ToString());
-            User user = result.Data;
-            ViewBag.Image = user.ProfileImage;
-            return View();
-
-        }
-
-        public IActionResult ChatPage()
-        {
+            _user = result.Data;
+            ViewBag.Image = _user.ProfileImage;
             return View();
         }
+        
     }
 }
+
