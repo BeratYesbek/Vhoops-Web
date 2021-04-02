@@ -17,14 +17,18 @@ namespace WebUI.Controllers
         User _user;
         public async Task<IActionResult> Index()
         {
-            var email = TempData["Email"];
-            UserManager userManager = new UserManager(new UserDal());
-            var result = await userManager.GetByEmail(email.ToString());
-            _user = result.Data;
-            ViewBag.Image = _user.ProfileImage;
+            if (!constants.control)
+            {
+                constants.userEmail = TempData["Email"].ToString();
+                constants.control = true;
+                UserManager userManager = new UserManager(new UserDal());
+                var result = await userManager.GetByEmail(constants.userEmail);
+                _user = result.Data;
+                ViewBag.Image = _user.ProfileImage;
+            }
             return View();
         }
-        
+
     }
 }
 
