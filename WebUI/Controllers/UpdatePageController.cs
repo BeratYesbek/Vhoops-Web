@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace WebUI.Controllers
 {
-    public class HomeController : Controller
+    public class UpdatePageController : Controller
     {
         public IActionResult Index()
         {
             return View();
+        }
+        public IActionResult Popup()
+        {
+            return PartialView();
         }
     }
 }
