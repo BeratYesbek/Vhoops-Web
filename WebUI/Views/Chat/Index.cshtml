@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+ 
 <html lang="en">
 
 <head>
@@ -18,8 +19,9 @@
 
         </div>
         @*Mesaj listesi*@
-        <div id="conversation-list">
-
+    <div id="conversation-list">
+        @for (int i = 0; i < 12; i++)
+        {
             <div class="conversation ">
                 <img src="~/images/profile.png" alt="">
                 <div class="title-text">
@@ -33,128 +35,8 @@
                     Yavuz varya öff
                 </div>
             </div>
-            <div class="conversation ">
-                <img src="~/images/profile.png" alt="">
-                <div class="title-text">
-                    Berat Yeşbek
-                </div>
-                <div class="created-date">
-                    12:33
-                </div>
-                <div class="conversation-message">
-                    Maşallah maşallah
-                </div>
-            </div>
-            <div class="conversation ">
-                <img src="~/images/profile.png" alt="">
-                <div class="title-text">
-                    Kerem Sarı
-                </div>
-                <div class="created-date">
-                    12:33
-                </div>
-                <div class="conversation-message">
-                    Yavuz varya öff
-                </div>
-            </div>
-            <div class="conversation ">
-                <img src="~/images/profile.png" alt="">
-                <div class="title-text">
-                    Kerem Sarı
-                </div>
-                <div class="created-date">
-                    12:33
-                </div>
-                <div class="conversation-message">
-                    Yavuz varya öff
-                </div>
-            </div>
-            <div class="conversation ">
-                <img src="~/images/profile.png" alt="">
-                <div class="title-text">
-                    Kerem Sarı
-                </div>
-                <div class="created-date">
-                    12:33
-                </div>
-                <div class="conversation-message">
-                    Yavuz varya öff
-                </div>
-            </div>
-            <div class="conversation ">
-                <img src="~/images/profile.png" alt="">
-                <div class="title-text">
-                    Kerem Sarı
-                </div>
-                <div class="created-date">
-                    12:33
-                </div>
-                <div class="conversation-message">
-                    Yavuz varya öff
-                </div>
-            </div>
-            <div class="conversation ">
-                <img src="~/images/profile.png" alt="">
-                <div class="title-text">
-                    Kerem Sarı
-                </div>
-                <div class="created-date">
-                    12:33
-                </div>
-                <div class="conversation-message">
-                    Yavuz varya öff
-                </div>
-            </div>
-            <div class="conversation ">
-                <img src="~/images/profile.png" alt="">
-                <div class="title-text">
-                    Kerem Sarı
-                </div>
-                <div class="created-date">
-                    12:33
-                </div>
-                <div class="conversation-message">
-                    Yavuz varya öff
-                </div>
-            </div>
-            <div class="conversation ">
-                <img src="~/images/profile.png" alt="">
-                <div class="title-text">
-                    Kerem Sarı
-                </div>
-                <div class="created-date">
-                    12:33
-                </div>
-                <div class="conversation-message">
-                    Yavuz varya öff
-                </div>
-            </div>
-            <div class="conversation ">
-                <img src="~/images/profile.png" alt="">
-                <div class="title-text">
-                    Kerem Sarı
-                </div>
-                <div class="created-date">
-                    12:33
-                </div>
-                <div class="conversation-message">
-                    Yavuz varya öff
-                </div>
-            </div>
-            <div class="conversation ">
-                <img src="~/images/profile.png" alt="">
-                <div class="title-text">
-                    Kerem Sarı
-                </div>
-                <div class="created-date">
-                    12:33
-                </div>
-                <div class="conversation-message">
-                    Yavuz varya öff
-                </div>
-            </div>
-
-        </div>
+        }
+    </div>
         @*genel bilgilerin olduğu kısım*@
         <div id="general">
             <a href="#">
@@ -165,11 +47,11 @@
                 <span class="chest-badge">3</span>
                 <img class="chest" src="~/images/black-chest.svg" alt="">
             </a>
-            <a class="myProfile" href="#">
-                <img style="width: 60px; height: 60px; border-radius: 50%;" onclick="openMyNav()" ondblclick="closeMyNav()" src="@ViewBag.Image"
+            <div class="myProfile" href="#">
+                <img  onclick="openMyNav()" ondblclick="closeMyNav()" src="@ViewBag.Image"
                      alt="">
 
-            </a>
+            </div>
 
         </div>
         @*mesajlaşma kutusunun üstündeki alan*@
@@ -194,26 +76,27 @@
             </div>
         </div>
         @*mesaj alanın içi*@
-        <div id="chat-message-list">
+    <div id="chat-message-list">
 
-            @await Html.PartialAsync("_MySideProfilePanel")
-            @*sender message*@
-            <div class="message-row you-message">
-                <div class="message-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae natus quo
-                    eveniet vero!
-                </div>
-                <div class="message-time">12:33</div>
+        @await Html.PartialAsync("_MySideProfilePanel")
+        
+        @*sender message*@
+        <div class="message-row you-message">
+            <div class="message-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae natus quo
+                eveniet vero!
             </div>
-            <div class="message-row other-message">
-                <div class="message-text">
-                    Kerem sen çok güzel bir insansın ya. Lorem ipsum dolor sit. Lorem ipsum dolor
-                    sit amet consectetur adipisicing elit. Quo, pariatur?
-                </div>
-                <div class="message-time">12:33</div>
-            </div>
-            @await Html.PartialAsync("_SidePanel")
+            <div class="message-time">12:33</div>
         </div>
+        <div class="message-row other-message">
+            <div class="message-text">
+                Kerem sen çok güzel bir insansın ya. Lorem ipsum dolor sit. Lorem ipsum dolor
+                sit amet consectetur adipisicing elit. Quo, pariatur?
+            </div>
+            <div class="message-time">12:33</div>
+        </div>
+        @await Html.PartialAsync("_SidePanel")
+    </div>
 
 
         <div id="chat-form">

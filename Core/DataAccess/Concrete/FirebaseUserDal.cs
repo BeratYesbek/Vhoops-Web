@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Core.DataAccess.Concrete
 {
-   
+
     public class FirebaseUserDal : IFirebaseUserDal
     {
 
@@ -22,7 +22,7 @@ namespace Core.DataAccess.Concrete
         {
             FirebaseConstants.RunFirebase();
         }
-        
+
 
         public async Task<IResult> Add(User entity)
         {
@@ -47,7 +47,7 @@ namespace Core.DataAccess.Concrete
             return new ErrorResult();
         }
 
-        public async Task<IResult> Delete(User entity)
+        public Task<IResult> Delete(User entity)
         {
             throw new NotImplementedException();
 
@@ -122,7 +122,7 @@ namespace Core.DataAccess.Concrete
             }
             return new ErrorResult();
         }
-        
+
 
         public async Task<IDataResult<User>> GetById(string Id)
         {

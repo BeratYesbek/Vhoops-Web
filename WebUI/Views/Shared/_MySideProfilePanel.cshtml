@@ -1,6 +1,9 @@
-﻿<link rel="stylesheet" href="~/css/profileUpdateStyle.css">
-
-
+﻿@{
+    ViewBag.Title = "Index";
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <div id="myProfileSidepanel" class="myProfilesidepanel">
     <a href="javascript:void(0)" class="closebtn" onclick="closeMyNav()">×</a>
     <img src="@ViewBag.Image" alt="">
@@ -10,41 +13,9 @@
     <hr class="mySideProfile-hr">
     <a class="about" href="#">kerem html yazmakta zorlanıyor üzülüyor ağlıyor. kerem html sevmedi...</a>
     <hr class="mySideProfile-hr">
-    <a href="#"> <button class="update-button" id="myBtn"> Güncelle </button></a>
-</div>
-
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <a href="javascript:void(0)" class="my-profile-update close" onclick="closeNav()">×</a>
-        <div class="image-content">
-            <img src="@ViewBag.Image">
-            <button id="change-photo"><i class="fas fa-images">Değiştir</i></button>
-        </div>
-        <form class="update-form">
-            <div class="form-group">
-                <input placeholder="Ad" type="text" maxlength="18" class="form-control" id="exampleInputEmail1"
-                       aria-describedby="emailHelp">
-            </div>
-            <div class="form-group">
-                <input placeholder="Soyad" type="text" maxlength="18" class="form-control" id="exampleInputEmail1"
-                       aria-describedby="emailHelp">
-            </div>
-            <div class="form-group">
-                <input placeholder="Kullanıcı Adı" maxlength="12" type="text" class="form-control" id="exampleInputEmail1"
-                       aria-describedby="emailHelp">
-            </div>
-            <div class="form-group">
-                <input placeholder="Eposta" type="text" maxlength="28" class="form-control" id="exampleInputEmail1"
-                       aria-describedby="emailHelp">
-            </div>
-            <div class="form-group">
-                <textarea placeholder="Hakkında" class="form-control" maxlength="30"></textarea>
-            </div>
-            <div>
-                <button class="submit-button">Güncelle</button>
-            </div>
-        </form>
-    </div>
+    <a href="" type="button">
+        <button class="update-button" id="myBtn" data-toggle="modal" data-target="#myModal"> Güncelle </button>
+    </a>
 </div>
 
 <script>

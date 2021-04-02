@@ -72,7 +72,7 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(UserValidator))]
-        public async Task<IResult> UserLogin(User entity)
+        public  Task<IResult> UserLogin(User entity)
         {
             throw new NotImplementedException();
         }
@@ -87,36 +87,72 @@ namespace Business.Concrete
 
         public async Task<IDataResult<List<User>>> GetAll()
         {
-            await _userDal.GetAll();
-            return new SuccessDataResult<List<User>>();
+            var result =await _userDal.GetAll();
+            if (result.Success)
+            {
+                return new SuccessDataResult<List<User>>();
+            }
+            else
+            {
+                return new ErrorDataResult<List<User>>();
+            }
         }
 
         public async Task<IDataResult<User>> GetById(string id)
         {
-            await _userDal.GetById(id);
-            return new SuccessDataResult<User>();
+            var result = await _userDal.GetById(id);
+            if (result.Success)
+            {
+                return new SuccessDataResult<User>();
+            }
+            else
+            {
+                return new ErrorDataResult<User>();
+            }
         }
 
         public async Task<IDataResult<User>> GetProfileImage(User manager)
         {
-            await _userDal.GetById(manager.UserID);
-            return new SuccessDataResult<User>();
+            var result = await _userDal.GetById(manager.UserID);
+            if (result.Success)
+            {
+                return new SuccessDataResult<User>();
+            }
+            else
+            {
+                return new ErrorDataResult<User>();
+            }
         }
 
         public async Task<IResult> UpdateProfileImage(User manager)
         {
-            await _userDal.GetById(manager.UserID);
-            return new SuccessDataResult<User>();
+            var result = await _userDal.GetById(manager.UserID);
+            if (result.Success)
+            {
+                return new SuccessDataResult<User>();
+            }
+            else
+            {
+                return new ErrorDataResult<User>();
+            }
         }
 
         public async Task<IResult> UploadProfileImage(User manager)
         {
-            await _userDal.GetById(manager.UserID);
-            return new SuccessDataResult<User>();
+            var result = await _userDal.GetById(manager.UserID);
+            if (result.Success)
+            {
+                return new SuccessDataResult<User>();
+            }
+            else
+            {
+                return new ErrorDataResult<User>();
+            }
         }
-        public Task<IDataResult<User>> GetByUserName(string userName)
+        public async Task<IDataResult<User>> GetByUserName(string userName)
         {
-            throw new NotImplementedException();
+            var result = await _userDal.GetByUserName(userName);
+            return result;
         }
         public async Task<IDataResult<User>> GetByEmail(string email)
         {
@@ -124,7 +160,6 @@ namespace Business.Concrete
             return result;
 
         }
-
 
         /* <---------------  BusinessRules  ---------------> */
 
