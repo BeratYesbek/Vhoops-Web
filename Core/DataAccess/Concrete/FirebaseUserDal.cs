@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using WebUI;
 
 namespace Core.DataAccess.Concrete
 {
@@ -67,14 +68,15 @@ namespace Core.DataAccess.Concrete
                 foreach (DocumentSnapshot document in userSnapshots.Documents)
                 {
                     Dictionary<string, object> data = document.ToDictionary();
-
+                    string documentId = document.Id;
                     string firstName = data["FirstName"].ToString();
                     string lastName = data["LastName"].ToString();
                     string email = data["Email"].ToString();
                     string userID = data["UserID"].ToString();
                     string _userName = data["UserName"].ToString();
+                    string about = data["About"].ToString();
 
-                    userList.Add(new User(firstName, lastName, email, "", _userName, userID, null));
+                    userList.Add(new User(firstName, lastName, email, "", _userName, userID, null, about,documentId));
                 }
                 return new SuccessDataResult<List<User>>(userList);
             }
@@ -89,15 +91,20 @@ namespace Core.DataAccess.Concrete
         {
             FirestoreDb database = FirestoreDb.Create(FirebaseConstants.DATABASE);
 
-            DocumentReference document = database.Collection(FirebaseConstants.USER_COLLECTION).Document("dpsağkdjuasgdas");
+            DocumentReference document = database.Collection(FirebaseConstants.USER_COLLECTION).Document(entity.DocumentId);
 
-            Dictionary<string, object> user = new Dictionary<string, object>
+            Dictionary<string, object> user = new Dictionary<string, object>();
+            user.Add("FirstName", entity.FirstName);
+            user.Add("LastName", entity.LastName);
+            user.Add("UserName", entity.UserName);
+
+
+            if (entity.ProfileImage != null)
             {
-                {"FirstName",entity.FirstName },
-                {"LastName",entity.LastName },
-                {"UserName",entity.UserName },
-                {"ProfileImage",entity.ProfileImage.ToString()}
-            };
+                user.Add("ProfileImage", entity.ProfileImage.ToString());
+
+            }
+
             await document.UpdateAsync(user);
 
             return new SuccessResult();
@@ -135,7 +142,7 @@ namespace Core.DataAccess.Concrete
             foreach (DocumentSnapshot document in userSnapshots.Documents)
             {
                 Dictionary<string, object> data = document.ToDictionary();
-
+                string documentId = document.Id;
                 string firstName = data["FirstName"].ToString();
                 string lastName = data["LastName"].ToString();
                 string email = data["Email"].ToString();
@@ -143,14 +150,16 @@ namespace Core.DataAccess.Concrete
                 string userName = data["UserName"].ToString();
                 string profileImage = data["ProfileImage"].ToString();
                 string token = data["Token"].ToString();
-                Uri uriImage;
+                string about = data["About"].ToString();
+
+                Uri uriImage = null;
                 if (profileImage != null)
                 {
                     uriImage = new Uri(profileImage);
                 }
 
 
-                user = new User(firstName, lastName, email, "", userName);
+                user = new User(firstName, lastName, email, "", userName, userID, uriImage, about,documentId);
 
             }
 
@@ -162,17 +171,16 @@ namespace Core.DataAccess.Concrete
 
         }
 
-        public async Task<IResult> UploadProfileImage(object profileImage)
+        public async Task<IResult> UploadProfileImage(string path)
         {
 
-            var file = File.Open(@"C:\Users\berat\Pictures\berat.jpg", FileMode.Open);
+            var file = File.Open(path, FileMode.Open);
 
 
-            // here is have to change later
             var task = new FirebaseStorage("vhoops-a2dce.appspot.com")
-                .Child("data")
-                .Child("random")
-                .Child("file.png")
+                .Child("UserProfileImage")
+                .Child(UserConstants.userId)
+                .Child("profileImage")
                 .PutAsync(file);
 
             var downloadUrl = await task;
@@ -185,6 +193,27 @@ namespace Core.DataAccess.Concrete
 
 
         }
+
+
+        public async Task<IDataResult<String>> GetProfileImage()
+        {
+            var task = new FirebaseStorage("vhoops-a2dce.appspot.com")
+                .Child("UserProfileImage")
+                .Child(UserConstants.userId)
+                .Child("profileImage")
+                .GetDownloadUrlAsync();
+
+            var downloadUrl = await task;
+            if (downloadUrl != null)
+            {
+                return new SuccessDataResult<String>(downloadUrl);
+
+            }
+            return new ErrorDataResult<String>();
+
+        }
+
+
 
         public async Task<IResult> UpdateProfileImage(object profileImage)
         {
@@ -216,7 +245,7 @@ namespace Core.DataAccess.Concrete
             foreach (DocumentSnapshot document in userSnapshots.Documents)
             {
                 Dictionary<string, object> data = document.ToDictionary();
-
+                string documentId = document.Id;
                 string firstName = data["FirstName"].ToString();
                 string lastName = data["LastName"].ToString();
                 string email = data["Email"].ToString();
@@ -224,13 +253,15 @@ namespace Core.DataAccess.Concrete
                 string _userName = data["UserName"].ToString();
                 string profileImage = data["ProfileImage"].ToString();
                 string token = data["Token"].ToString();
+                string about = data["About"].ToString();
+
                 Uri uriImage;
                 if (profileImage != null)
                 {
                     uriImage = new Uri(profileImage);
                 }
 
-                user = new User(firstName, lastName, email, "", _userName, userID, null);
+                user = new User(firstName, lastName, email, "", _userName, userID, null, about,documentId);
 
             }
             if (user != null)
@@ -259,6 +290,8 @@ namespace Core.DataAccess.Concrete
                 string userName = data["UserName"].ToString();
                 string profileImage = data["ProfileImage"].ToString();
                 string token = data["Token"].ToString();
+                string about = data["About"].ToString();
+
                 Uri uriImage = null;
                 if (profileImage != null)
                 {
@@ -266,7 +299,7 @@ namespace Core.DataAccess.Concrete
                 }
 
 
-                user = new User(firstName, lastName, _email, "", userName, userID, uriImage);
+                user = new User(firstName, lastName, _email, "", userName, userID, uriImage, about,documentId);
 
             }
             if (user != null)
@@ -275,5 +308,6 @@ namespace Core.DataAccess.Concrete
             }
             return new ErrorDataResult<User>(user);
         }
+
     }
 }

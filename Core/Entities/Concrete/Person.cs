@@ -17,7 +17,8 @@ namespace Core.Entities.Concrete
             LastName = lastName;
             Email = email;
             Password = password;
-            UserName = userID;
+            UserName = UserName;
+            UserID = userID;
         }
         public Person() { }
         public string FirstName { get; set; }

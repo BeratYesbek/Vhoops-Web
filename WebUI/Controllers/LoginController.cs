@@ -67,6 +67,9 @@ namespace WebUI.Controllers
                 user_email = user.Email;
                 if (token != null)
                 {
+                    UserConstants.userId = user.LocalId;
+
+
                     return new SuccessResult();
                 }
                 else

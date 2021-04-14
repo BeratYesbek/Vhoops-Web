@@ -1,0 +1,28 @@
+﻿@{ ViewBag.Title = "Index"; }
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<div id="myProfileSidepanel" class="myProfilesidepanel">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeMyNav()">×</a>
+    <img src="@ViewBag.Image" alt="">
+    <a class="all-name" href="#">Kerem Sarı</a>
+    <hr class="mySideProfile-hr">
+    <a class="username" href="#">krmsari</a>
+    <hr class="mySideProfile-hr">
+    <a class="about" href="#">kerem html yazmakta zorlanıyor üzülüyor ağlıyor. kerem html sevmedi...</a>
+    <hr class="mySideProfile-hr">
+    <a href="" type="button">
+        <form asp-action="getPage" method="post">
+            <button  class="update-button" id="myBtn" data-toggle="modal" data-target="#myModal"> Güncelle </button>
+
+        </form>
+    </a>
+</div>
+
+<script>function openMyNav() {
+        document.getElementById("myProfileSidepanel").style.width = "25%";
+    }
+
+    function closeMyNav() {
+        document.getElementById("myProfileSidepanel").style.width = "0";
+    }</script>

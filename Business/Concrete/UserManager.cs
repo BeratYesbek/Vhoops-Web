@@ -4,12 +4,15 @@ using Business.ValiditionRules.FluentValidation;
 using Core.Autofac;
 using Core.DataAccess.Abstract;
 using Core.Entities.Concrete;
+using Core.Entities.FileHelper;
 using Core.Utilities.Business;
 using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
 using DataAccess.Abstract;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -59,25 +62,29 @@ namespace Business.Concrete
         [ValidationAspect(typeof(UserValidator))]
         public async Task<IResult> Update(User entity)
         {
-            IResult result = BusinessRules.Run(CheckSpecialChar(entity.Password), CheckIfCorrectEmail(entity.Email));
-            if (result != null)
-            {
-                return result;
-            }
-            else
-            {
-                await _userDal.Update(entity);
-                return new SuccessResult();
-            }
+            /*  IResult result = BusinessRules.Run(CheckSpecialChar(entity.Password), CheckIfCorrectEmail(entity.Email));
+              if (result != null)
+              {
+                  return result;
+              }
+              else
+              {
+
+              }*/
+
+            var result = await _userDal.Update(entity);
+            return result;
         }
 
         [ValidationAspect(typeof(UserValidator))]
-        public  Task<IResult> UserLogin(User entity)
+        public Task<IResult> UserLogin(User entity)
         {
             throw new NotImplementedException();
         }
 
+
         [ValidationAspect(typeof(UserValidator))]
+
         public async Task<IResult> CreateUser(User entity)
         {
             var result = await _userDal.CreateUser(entity);
@@ -87,7 +94,7 @@ namespace Business.Concrete
 
         public async Task<IDataResult<List<User>>> GetAll()
         {
-            var result =await _userDal.GetAll();
+            var result = await _userDal.GetAll();
             if (result.Success)
             {
                 return new SuccessDataResult<List<User>>();
@@ -101,27 +108,13 @@ namespace Business.Concrete
         public async Task<IDataResult<User>> GetById(string id)
         {
             var result = await _userDal.GetById(id);
-            if (result.Success)
-            {
-                return new SuccessDataResult<User>();
-            }
-            else
-            {
-                return new ErrorDataResult<User>();
-            }
+            return result;
         }
 
-        public async Task<IDataResult<User>> GetProfileImage(User manager)
+        public async Task<IDataResult<string>> GetProfileImage()
         {
-            var result = await _userDal.GetById(manager.UserID);
-            if (result.Success)
-            {
-                return new SuccessDataResult<User>();
-            }
-            else
-            {
-                return new ErrorDataResult<User>();
-            }
+            var result = await _userDal.GetProfileImage();
+            return result;
         }
 
         public async Task<IResult> UpdateProfileImage(User manager)
@@ -137,9 +130,9 @@ namespace Business.Concrete
             }
         }
 
-        public async Task<IResult> UploadProfileImage(User manager)
+        public async Task<IResult> UploadProfileImage(string file)
         {
-            var result = await _userDal.GetById(manager.UserID);
+            var result = await _userDal.UploadProfileImage(file);
             if (result.Success)
             {
                 return new SuccessDataResult<User>();
@@ -156,7 +149,7 @@ namespace Business.Concrete
         }
         public async Task<IDataResult<User>> GetByEmail(string email)
         {
-            var result =  await _userDal.GetByEmail(email);
+            var result = await _userDal.GetByEmail(email);
             return result;
 
         }
@@ -202,7 +195,7 @@ namespace Business.Concrete
             }
         }
 
-      
+
     }
 }
 
