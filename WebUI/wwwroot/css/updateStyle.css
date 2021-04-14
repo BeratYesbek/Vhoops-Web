@@ -1,0 +1,105 @@
+﻿body {
+    background-color: #1c69b1;
+}
+/* #1c2833 */
+*:focus {
+    transition: all 0.5s;
+    outline: none;
+}
+
+.box {
+    position: relative;
+    border: 2px solid #3498db;
+    /* box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288); */
+    /* border-radius: 50%; */
+    background-color: rgb(22, 69, 122);
+    margin-top: 8%;
+    overflow: hidden;
+    transition: all 1s;
+    width: 1200px;
+    height: 650px;
+    border-radius: 20px;
+}
+
+    .box img {
+        position: relative;
+        border-radius: 50%;
+        margin: 0;
+        padding: 2px;
+        background-color: white;
+        width: 150px;
+        height: 150px;
+        margin: 20px 31%;
+    }
+
+    .box input[type="text"],
+    .box input[type="email"] {
+        margin-top: 3%;
+        display: block;
+        box-sizing: border-box;
+        background: none;
+        color: #3498db;
+        margin-bottom: 30px;
+        padding: 4px;
+        width: 220px;
+        height: 32px;
+        border: none;
+        border-bottom: 1px solid #0082e6;
+        font-family: 'Roboto',sans-serif;
+        font-weight: 400;
+        font-size: 15px;
+    }
+
+        .box input[type="text"]:focus,
+        .box input[type="email"]:focus {
+            border-bottom: 2px solid #3498db;
+            border-bottom-right-radius: 20px;
+            color: #3498db;
+            transition: 0.2 ease;
+        }
+
+    .box button {
+        position: absolute;
+        border: 1px solid #3498db;
+        background-color: black;
+        color: white;
+        height: 30px;
+        width: 100px;
+        border-radius: 5px;
+        margin: 0px;
+        transition: all 0.3s;
+    }
+
+        .box button:hover {
+            transform: scale(1.1);
+        }
+
+    .box input[type="file"] {
+        transition: all 0.3s;
+        display: none;
+    }
+
+    .box label {
+        font-size: 18px;
+        color: black;
+        padding: 2px 15px;
+        border-radius: 5px;
+        transition: all 0.3s;
+        background-color: #5a6064;
+        color: black;
+    }
+
+        .box label:hover {
+            background-color: #3498db;
+            color: black;
+        }
+/* .box:hover{
+    width: 800px;
+    height: 600px;
+    border-radius: 5px;
+}
+.box:hover img{
+    width: 100px;
+    height: 100px;
+    margin: 20px 31%;
+} */

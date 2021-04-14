@@ -9,6 +9,5 @@ namespace WebUI
     {
         public static string userEmail = null;
         public static bool control = false;
-
     }
 }

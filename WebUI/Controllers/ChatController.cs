@@ -25,13 +25,10 @@ namespace WebUI.Controllers
                 var result = await userManager.GetByEmail(constants.userEmail);
                 _user = result.Data;
                 ViewBag.Image = _user.ProfileImage;
-
             }
-          
-         
             return View();
         }
-        
+
     }
 }
 
