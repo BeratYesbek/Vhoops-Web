@@ -15,37 +15,38 @@
         <div class="box">
 
             <form asp-controller="Admin" method="POST" enctype="multipart/form-data">
-                <!-- <img src="~/img/berat.jpg" alt=""> -->
                 @if (Model != null)
                 {
-    <img style="left:1% ;" src="@Model.ProfileImage.ToString()" alt="">
+                    <img style="left:1% ;" src="@Model.ProfileImage.ToString()" alt="">
                     <input type="file" value="@Model.ProfileImage.ToString()" name="file" id="file" accept="image/*">
-                                    <label style="margin-left: 18%;" for="file">Değiştir</label>
-                                                    <input type="text" value="@Model.FirstName" name="FirstName" placeholder="Ad">
-                                                                    <input type="text" value="@Model.LastName" name="LastName" placeholder="Soyadı">
-                                                                                    <input type="text" value="@Model.UserName" name="UserName" placeholder="Kullanıcı Adı">
-                                                                                                    <input type="text" value="@Model.About" name="About" placeholder="Hakkında">
+                    <label style="margin-left: 18%;" for="file">Değiştir</label>
+                    <input type="text" value="@Model.FirstName" name="FirstName" placeholder="Ad">
+                    <input type="text" value="@Model.LastName" name="LastName" placeholder="Soyadı">
+                    <input type="text" value="@Model.UserName" name="UserName" placeholder="Kullanıcı Adı">
+                    <input type="text" value="@Model.About" name="About" placeholder="Hakkında">
 
 
-                                                                                                                    <button style="float: left;left: 40%;">Geri</button>
+                    <button style="float: left;left: 40%;">Geri</button>
 
 
-                                                                                                                                    <button type="submit" style="float: right;margin-left: 1%;">Kaydet</button> }
-                                                                                                                                else
-                                                                                                                                {
-                                                                                                                    <img style="left:1% ;" alt="">
-                                                                                                                                    <input type="file" name="file" id="file" accept="image/*">
-                                                                                                                                                    <label style="margin-left: 18%;" for="file">Değiştir</label>
-                                                                                                                                                                    <input type="text" name="FirstName" placeholder="Ad">
-                                                                                                                                                                                    <input type="text" name="LastName" placeholder="Soyadı">
-                                                                                                                                                                                                    <input type="text" name="UserName" placeholder="Kullanıcı Adı">
-                                                                                                                                                                                                                    <input type="text" name="About" placeholder="Hakkında">
+                    <button type="submit" style="float: right;margin-left: 1%;">Kaydet</button>
+                }
+                else
+                {
+                    <img style="left:1% ;" alt="">
+                    <input type="file" name="file" id="file" accept="image/*">
+                    <label style="margin-left: 18%;" for="file">Değiştir</label>
+                    <input type="text" name="FirstName" placeholder="Ad">
+                    <input type="text" name="LastName" placeholder="Soyadı">
+                    <input type="text" name="UserName" placeholder="Kullanıcı Adı">
+                    <input type="text" name="About" placeholder="Hakkında">
 
 
-                                                                                                                                                                                                                                    <button style="float: left;left: 40%;">Geri</button>
+                    <button style="float: left;left: 40%;">Geri</button>
 
 
-                                                                                                                                                                                                                                                    <button type="submit" style="float: right;margin-left: 1%;">Kaydet</button>}
+                    <button type="submit" style="float: right;margin-left: 1%;">Kaydet</button>
+                }
 
 
             </form>

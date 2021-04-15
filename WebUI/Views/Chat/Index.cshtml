@@ -1,5 +1,4 @@
 ﻿<!DOCTYPE html>
- 
 <html lang="en">
 
 <head>
@@ -7,8 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="~/css/chatStyle.css">
-    <script src="https://kit.fontawesome.com/cef350f31b.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="~/fontawesome/css/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+
     <title>Vhoops</title>
 </head>
 
@@ -18,25 +19,28 @@
             <input type="text" maxlength="18" placeholder="Arama" />
 
         </div>
+
         @*Mesaj listesi*@
-    <div id="conversation-list">
-        @for (int i = 0; i < 12; i++)
-        {
-            <div class="conversation ">
-                <img src="~/images/profile.png" alt="">
-                <div class="title-text">
-                    <span class="badge">3</span>
-                    Kerem Sarı
+        <div id="conversation-list">
+
+            @for (int i = 0; i < 12; i++)
+            {
+                <div class="conversation ">
+                    <img src="~/images/profile.png" alt="">
+                    <div class="title-text">
+                        <span class="badge">3</span>
+                        Kerem Sarı
+                    </div>
+                    <div class="created-date">
+                        12:33
+                    </div>
+                    <div class="conversation-message">
+                        Yavuz varya öff
+                    </div>
                 </div>
-                <div class="created-date">
-                    12:33
-                </div>
-                <div class="conversation-message">
-                    Yavuz varya öff
-                </div>
-            </div>
-        }
-    </div>
+            }
+        </div>
+
         @*genel bilgilerin olduğu kısım*@
         <div id="general">
             <a href="#">
@@ -48,12 +52,13 @@
                 <img class="chest" src="~/images/black-chest.svg" alt="">
             </a>
             <div class="myProfile" href="#">
-                <img  onclick="openMyNav()" ondblclick="closeMyNav()" src="@ViewBag.Image"
+                <img onclick="openMyNav()" ondblclick="closeMyNav()" src="@ViewBag.Image"
                      alt="">
 
             </div>
 
         </div>
+
         @*mesajlaşma kutusunun üstündeki alan*@
         <div id="chat-title">
             <img src="~/images/profile.png" ondblclick="closeNav()" onclick="openNav()" alt="">
@@ -63,10 +68,7 @@
             <div class="dropdown-container" id="dropdown" tabindex="-1">
                 <div class="three-dots" onclick="closeNav()"></div>
                 <div class="dropdown">
-                    <a href="#">
-                        <div>Profil</div>
-                    </a>
-                    <a href="#">
+                    <a href="#" id="settingsBtn">
                         <div>Ayarlar</div>
                     </a>
                     <a href="#">
@@ -75,29 +77,27 @@
                 </div>
             </div>
         </div>
+
         @*mesaj alanın içi*@
-    <div id="chat-message-list">
-
-        @await Html.PartialAsync("_MySideProfilePanel")
-        
-        @*sender message*@
-        <div class="message-row you-message">
-            <div class="message-text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae natus quo
-                eveniet vero!
+        <div id="chat-message-list">
+            @await Html.PartialAsync("_MySideProfilePanel")
+            @*sender message*@
+            <div class="message-row you-message">
+                <div class="message-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae natus quo
+                    eveniet vero!
+                </div>
+                <div class="message-time">12:33</div>
             </div>
-            <div class="message-time">12:33</div>
-        </div>
-        <div class="message-row other-message">
-            <div class="message-text">
-                Kerem sen çok güzel bir insansın ya. Lorem ipsum dolor sit. Lorem ipsum dolor
-                sit amet consectetur adipisicing elit. Quo, pariatur?
+            <div class="message-row other-message">
+                <div class="message-text">
+                    Kerem sen çok güzel bir insansın ya. Lorem ipsum dolor sit. Lorem ipsum dolor
+                    sit amet consectetur adipisicing elit. Quo, pariatur?
+                </div>
+                <div class="message-time">12:33</div>
             </div>
-            <div class="message-time">12:33</div>
+            @await Html.PartialAsync("_SidePanel")
         </div>
-        @await Html.PartialAsync("_SidePanel")
-    </div>
-
 
         <div id="chat-form">
             <div class="chat-svg">
@@ -107,25 +107,18 @@
             </div>
             <div class="input-group">
                 <div class="input-group-append">
-                    <input type="text" id="MessageBox" ondblclick="closeNav()" maxlength="75" class="ForImg "
+                    <input type="text" id="MessageBox" ondblclick="closeNav()" maxlength="73" class="ForImg "
                            placeholder="Bir mesaj yaz." />
                 </div>
             </div>
         </div>
     </div>
+    @await Html.PartialAsync("_SettingsPopupPage")
 
 
 
-    <script>
-        function openNav() {
-            document.getElementById("mySidepanel").style.width = "25%";
-        }
 
-        function closeNav() {
-            document.getElementById("mySidepanel").style.width = "0";
-        }
-    </script>
-    <script src="~/js/chatMain.js"></script>
-    <script src="~/js/profileUpdate.js"></script>
+
 </body>
+
 </html>
