@@ -1,0 +1,125 @@
+﻿
+
+body {
+background: #ddd;
+font-family: "Raleway";
+}
+
+
+
+.modal .tabs {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 680px;
+height: 360px;
+padding: 30px 20px;
+background: transparent;
+overflow: hidden;
+}
+
+.modal .tabs .tab-header {
+float: left;
+width: 200px;
+height: 100%;
+border-right: 1px solid rgb(255, 255, 255);
+padding: 50px 0px;
+}
+
+.modal .tabs .tab-header > div {
+height: 50px;
+line-height: 50px;
+font-size: 16px;
+font-weight: 600;
+color: rgb(224, 224, 224);
+cursor: pointer;
+padding-left: 10px;
+}
+
+.modal .tabs .tab-header > div:hover,
+.modal .tabs .tab-header > div.active {
+color: #0f6689;
+}
+
+.modal .tabs .tab-header div i {
+display: inline-block;
+margin-left: 10px;
+margin-right: 5px;
+}
+
+.modal .tabs .tab-content {
+position: relative;
+height: 100%;
+overflow: hidden;
+}
+
+.modal .tabs .tab-content > div > i {
+display: inline-block;
+width: 50px;
+height: 50px;
+background: #555;
+color: #f5f5f5;
+font-size: 25px;
+font-weight: 600;
+text-align: center;
+line-height: 50px;
+border-radius: 50%;
+}
+
+.modal .tabs .tab-content > div {
+position: absolute;
+text-align: center;
+padding: 40px 20px;
+top: -200%;
+transition: all 500ms ease-in-out;
+}
+
+.modal .tabs .tab-content > div.active {
+top: 0px;
+}
+
+.modal .tabs .tab-indicator {
+position: absolute;
+width: 4px;
+height: 50px;
+background: #0f6689;
+left: 218px;
+top: 80px;
+transition: all 500ms ease-in-out;
+}
+
+.modal .information-area input {
+margin-top: 15%;
+border-radius: 20px;
+border: none;
+padding: 5px;
+}
+
+.modal .information-area label {
+font-weight: 600;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+font-size: 180%;
+}
+
+.glow-on-hover {
+margin-top: 10%;
+width: 90px;
+height: 40px;
+border: none;
+outline: none;
+color: #fff;
+background: #c25d0a;
+cursor: pointer;
+position: relative;
+z-index: 0;
+padding: 2px;
+border-radius: 12px;
+transition: all 0.3s;
+}
+
+
+.glow-on-hover:active {
+border-radius: 120px;
+color: rgb(140, 140, 140)
+}

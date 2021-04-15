@@ -1,0 +1,91 @@
+﻿.modal {
+display: block;
+/* Hidden by default */
+position: fixed;
+/* Stay in place */
+z-index: 1;
+/* Sit on top */
+padding-top: 80px;
+padding-bottom: 100px;
+padding-left: 350px;
+padding-right: 350px;
+/* Location of the box */
+left: 0;
+top: 0;
+width: 100% !important;
+/* Full width */
+height: 100%;
+/* Full height */
+overflow: auto;
+/* Enable scroll if needed */
+background-color: rgb(0, 0, 0);
+/* Fallback color */
+background-color: rgba(0, 0, 0, 0.4);
+/* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+position: relative;
+background-color: #3086D9;
+margin: auto;
+padding: 1px;
+border: 1px solid #888;
+width: 90%;
+height: 90%;
+border-radius: 40px;
+margin-top: 3.5%;
+-webkit-animation-name: animatetop;
+-webkit-animation-duration: 0.4s;
+animation-name: animatetop;
+animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+from {
+top: -300px;
+opacity: 0
+}
+
+to {
+top: 0;
+opacity: 1
+}
+}
+
+@keyframes animatetop {
+from {
+top: -300px;
+opacity: 0
+}
+
+to {
+top: 0;
+opacity: 1
+}
+}
+
+.settings-close {
+position: absolute;
+top: 0;
+color: rgb(209, 209, 209);
+font-size: 240%;
+margin-left: 4%;
+margin-top: 3%;
+}
+
+.SettingsTitle {
+font-weight: 600;
+color: rgb(209, 209, 209);
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+font-size: x-large;
+margin-left: 8%;
+margin-top: 5%;
+}
+
+.SettingsTitle hr {
+margin-top: 1%;
+background-color:white;
+width: 10%;
+}
