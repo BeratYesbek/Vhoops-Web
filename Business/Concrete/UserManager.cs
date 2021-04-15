@@ -94,15 +94,7 @@ namespace Business.Concrete
 
         public async Task<IDataResult<List<User>>> GetAll()
         {
-            var result = await _userDal.GetAll();
-            if (result.Success)
-            {
-                return new SuccessDataResult<List<User>>();
-            }
-            else
-            {
-                return new ErrorDataResult<List<User>>();
-            }
+            return await _userDal.GetAll(); 
         }
 
         public async Task<IDataResult<User>> GetById(string id)

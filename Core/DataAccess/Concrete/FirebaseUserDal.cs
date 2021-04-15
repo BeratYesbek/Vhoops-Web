@@ -67,7 +67,9 @@ namespace Core.DataAccess.Concrete
             {
                 foreach (DocumentSnapshot document in userSnapshots.Documents)
                 {
+
                     Dictionary<string, object> data = document.ToDictionary();
+
                     string documentId = document.Id;
                     string firstName = data["FirstName"].ToString();
                     string lastName = data["LastName"].ToString();
@@ -75,8 +77,15 @@ namespace Core.DataAccess.Concrete
                     string userID = data["UserID"].ToString();
                     string _userName = data["UserName"].ToString();
                     string about = data["About"].ToString();
+                    string profileImage = data["ProfileImage"].ToString();
 
-                    userList.Add(new User(firstName, lastName, email, "", _userName, userID, null, about,documentId));
+                    Uri uri = null;
+                    if(profileImage != null)
+                    {
+                        uri = new Uri(profileImage);
+                    }
+
+                    userList.Add(new User(firstName, lastName, email, "", _userName, userID, uri, about,documentId));
                 }
                 return new SuccessDataResult<List<User>>(userList);
             }
@@ -84,6 +93,7 @@ namespace Core.DataAccess.Concrete
             {
                 return new ErrorDataResult<List<User>>();
             }
+
         }
 
 

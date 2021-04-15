@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿
+
+
+
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,20 +28,16 @@
                     @if (ViewBag.Result != null)
                     {
 
-                        @if (ViewBag.Result)
-                        {
-                            <div class="alert alert-success" role="alert" style="margin:5px">
-                                Başarılı bir şekilde kayıt olundu
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="alert alert-danger" role="alert" style="margin:5px">
-                                @ViewBag.Message
-                            </div>
-                        }
-
-                    }
+        @if (ViewBag.Result)
+        {
+<div class="alert alert-success" role="alert" style="margin:5px">
+    Başarılı bir şekilde kayıt olundu
+</div> }
+else
+{
+<div class="alert alert-danger" role="alert" style="margin:5px">
+    @ViewBag.Message
+</div>}}
                     <!-- sol üst logo kısmı -->
                     <!-- <img src="images/logo_desk.png" alt=""/> -->
                 </div>
@@ -73,7 +75,7 @@
                             <input type="email" class="form-control" name="Email" id="mail" placeholder="Eposta" required>
                         </div>
                         <div class="form-row">
-                            <input type="password" class="form-control"  name="Password" id="password" placeholder="Şifre" required>
+                            <input type="password" class="form-control" name="Password" id="password" placeholder="Şifre" required>
                         </div>
                         <div class="form-row">
                             <input type="password" class="form-control" id="re_password" placeholder="Şifre tekrarı" required>
