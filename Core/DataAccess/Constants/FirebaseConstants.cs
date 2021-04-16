@@ -19,7 +19,7 @@ namespace Core.DataAccess.Constants
         /*<<<<---------Database Collection----------->>>>*/
         public static string USER_COLLECTION = "Users";
         public static string CHAT_COLLECTION = "Chats";
-
+        public static string FRIEND_REQUEST_COLLECTION = "FriendRequests";
         /*<<<<<------------Database properties-------->>>>>*/
         public static string DATABASE = "vhoops-a2dce";
         public static string STORAGE_PATH = "vhoops-a2dce.appspot.com";

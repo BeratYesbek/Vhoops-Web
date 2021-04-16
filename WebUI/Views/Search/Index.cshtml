@@ -48,7 +48,7 @@
                             <p class="description">
                                @Model[i].About
                             </p>
-                            <button type="button" class="btn">Add to friend</button>
+                            <button type="button" asp-action="SendFriendRequest" asp-route-id="@Model[i].UserID" class="btn">Add to friend</button>
                         </div>
                         <hr class="under" color="#000">
                     </div>

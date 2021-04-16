@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Core.DataAccess.Abstract.Firebase
 {
-    interface IFirebaseRequestDal
+    public interface IFirebaseRequestDal : IEntityRepository<FriendRequest>
     {
     }
 }

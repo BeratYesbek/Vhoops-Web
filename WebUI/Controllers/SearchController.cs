@@ -17,5 +17,10 @@ namespace WebUI.Controllers
            
             return View(result.Result.Data);
         }
+
+        public async Task<IActionResult> SendFriendRequest()
+        {
+            return View();
+        }
     }
 }
