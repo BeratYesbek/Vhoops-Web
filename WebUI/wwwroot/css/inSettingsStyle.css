@@ -17,6 +17,7 @@ height: 360px;
 padding: 30px 20px;
 background: transparent;
 overflow: hidden;
+cursor:default;
 }
 
 .modal .tabs .tab-header {
@@ -29,12 +30,11 @@ padding: 50px 0px;
 
 .modal .tabs .tab-header > div {
 height: 50px;
-line-height: 50px;
+line-height: 0.3px;
 font-size: 16px;
 font-weight: 600;
 color: rgb(224, 224, 224);
 cursor: pointer;
-padding-left: 10px;
 }
 
 .modal .tabs .tab-header > div:hover,
@@ -122,4 +122,13 @@ transition: all 0.3s;
 .glow-on-hover:active {
 border-radius: 120px;
 color: rgb(140, 140, 140)
+}
+.welcome-vhoops {
+    padding-bottom: 15px;
+    padding-top: 15px;
+    font-size: 18px;
+}
+.vhoops-description {
+    font-size: 12px;
+    font-weight: lighter;
 }
