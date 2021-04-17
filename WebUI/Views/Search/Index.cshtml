@@ -35,25 +35,33 @@
         <ul>
             @for (int i = 0; i < @Model.Count; i++)
             {
-                <li id="slide">
-                    <div class="wrapper">
-                        <hr class="above" color="#000">
-                        <div class="top-icons">
-                        </div>
-                        <div class="profile">
-                            <img id="imageProfile" class="thumbnail" src="@Model[i].ProfileImage.ToString()" />
-            
-                            <h3 class="name">@Model[i].FirstName.ToUpper() @Model[i].LastName.ToUpper() </h3>
-                            <p class="title">@Model[i].UserName </p>
-                            <p class="description">
-                               @Model[i].About
-                            </p>
-                            <button type="button" asp-action="SendFriendRequest" asp-route-id="@Model[i].UserID" class="btn">Add to friend</button>
-                        </div>
-                        <hr class="under" color="#000">
-                    </div>
-                </li>
-            }
+<li id="slide">
+    <div class="wrapper">
+        <hr class="above" color="#000">
+        <div class="top-icons">
+        </div>
+        <div class="profile">
+            <img id="imageProfile" class="thumbnail" src="@Model[i].ProfileImage.ToString()" />
+
+            <h3 class="name">@Model[i].FirstName.ToUpper() @Model[i].LastName.ToUpper() </h3>
+            <p class="title">@Model[i].UserName </p>
+            <p class="description">
+                @Model[i].About
+            </p>
+            @if (ViewBag.Result != null)
+            {
+
+
+@if (ViewBag.Result)
+{
+<button type="button" onclick="location.href=' @Url.Action("SendFriendRequest","Search", new { receiverId = @Model[i].UserID }) '" asp-action="SendFriendRequest" asp-route-id="@Model[i].UserID" class="btn">Cancel to Request</button>} }
+else
+{
+<button type="button" onclick="location.href=' @Url.Action("SendFriendRequest","Search", new { receiverId = @Model[i].UserID }) '" asp-action="SendFriendRequest" asp-route-id="@Model[i].UserID" class="btn">Add to friend</button>}
+        </div>
+        <hr class="under" color="#000">
+    </div>
+</li>            }
 
         </ul>
 
