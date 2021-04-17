@@ -275,6 +275,7 @@ justify-items: start;
 }
 
 .message-text {
+cursor: default;
 font-weight: 350;
 padding: 9px 14px;
 font-size: 1.6rem;
@@ -282,6 +283,7 @@ margin-bottom: 5px;
 }
 
 .message-time {
+cursor: default;
 font-size: 1.3rem;
 color: rgb(0, 0, 0);
 }
@@ -371,7 +373,7 @@ background-size: 5%;
 background-repeat: no-repeat;
 background-position-y: center;
 background-position-x: 98%;
-cursor: pointer;
+cursor: text;
 }
 
 ::-webkit-scrollbar {
@@ -465,14 +467,15 @@ padding-top: 60px;
 }
 
 .sidepanel a {
-margin-top: 5%;
-margin-bottom: 5%;
-font-weight: 300;
-padding: 8px 8px 8px 32px;
-text-decoration: none;
-color: #000000;
-display: block;
-transition: 0.3s;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-weight: 300;
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    color: #000000;
+    display: block;
+    transition: 0.3s;
+    cursor: default;
 }
 
 #chat-message-list .myProfilesidepanel {
@@ -492,14 +495,15 @@ padding-top: 60px;
 }
 
 .myProfilesidepanel a {
-margin-top: 5%;
-margin-bottom: 5%;
-font-weight: 300;
-padding: 8px 8px 8px 32px;
-text-decoration: none;
-color: #000000;
-display: block;
-transition: 0.3s;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-weight: 300;
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    color: #000000;
+    display: block;
+    cursor: default;
+    transition: 0.3s;
 }
 
 .myProfilesidepanel img {
@@ -540,6 +544,7 @@ margin-right: auto;
 position: absolute;
 top: 0;
 right: 25px;
+cursor:pointer;
 font-size: 36px;
 }
 
@@ -558,6 +563,7 @@ font-size: 15px;
 .sidepanel .closebtn {
 position: absolute;
 top: 0;
+cursor:pointer;
 right: 185px;
 font-size: 36px;
 }
