@@ -3,7 +3,7 @@
     
     we are junior developer please if you have any ideas about this project contact to us 
     
-/*******************************************************************************************************************************\
+/***********************************************************************************************************************\
 
 English 
 
@@ -13,7 +13,7 @@ Hello reader, we have been developing this project approximately for 3 week. it 
 
 Free chat with your friends .If you want to share location,image,video or file you can share easily with Vhoops
 
-/*******************************************************************************************************************************\
+/*************************************************************************************************************************\
 
 Turkish
 
