@@ -6,11 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="vhoops-a2dce-firebase-adminsdk-lp79g-52f9a01b70.json" />
+    <None Remove="vhoops-test-project-firebase-adminsdk-yhzj9-76b11a2217.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="vhoops-a2dce-firebase-adminsdk-lp79g-52f9a01b70.json">
+    <Content Include="vhoops-test-project-firebase-adminsdk-yhzj9-76b11a2217.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -36,6 +36,7 @@ namespace Core.DataAccess.Concrete
                  { "FirstName", entity.FirstName },
                  { "LastName", entity.LastName },
                  { "Email", entity.Email },
+                {"UserName",entity.UserName }
 
             };
 
@@ -80,12 +81,12 @@ namespace Core.DataAccess.Concrete
                     string profileImage = data["ProfileImage"].ToString();
 
                     Uri uri = null;
-                    if(profileImage != null)
+                    if (profileImage != null)
                     {
                         uri = new Uri(profileImage);
                     }
 
-                    userList.Add(new User(firstName, lastName, email, "", _userName, userID, uri, about,documentId));
+                    userList.Add(new User(firstName, lastName, email, "", _userName, userID, uri, about, documentId));
                 }
                 return new SuccessDataResult<List<User>>(userList);
             }
@@ -169,7 +170,7 @@ namespace Core.DataAccess.Concrete
                 }
 
 
-                user = new User(firstName, lastName, email, "", userName, userID, uriImage, about,documentId);
+                user = new User(firstName, lastName, email, "", userName, userID, uriImage, about, documentId);
 
             }
 
@@ -187,7 +188,7 @@ namespace Core.DataAccess.Concrete
             var file = File.Open(path, FileMode.Open);
 
 
-            var task = new FirebaseStorage("vhoops-a2dce.appspot.com")
+            var task = new FirebaseStorage(FirebaseConstants.STORAGE_PATH)
                 .Child("UserProfileImage")
                 .Child(UserConstants.userId)
                 .Child("profileImage")
@@ -207,7 +208,7 @@ namespace Core.DataAccess.Concrete
 
         public async Task<IDataResult<String>> GetProfileImage()
         {
-            var task = new FirebaseStorage("vhoops-a2dce.appspot.com")
+            var task = new FirebaseStorage(FirebaseConstants.STORAGE_PATH)
                 .Child("UserProfileImage")
                 .Child(UserConstants.userId)
                 .Child("profileImage")
@@ -228,9 +229,8 @@ namespace Core.DataAccess.Concrete
         public async Task<IResult> UpdateProfileImage(object profileImage)
         {
             // here is have to change later
-            var file = File.Open(@"C:\Users\berat\Pictures\berat.jpg", FileMode.Open);
 
-            var task = new FirebaseStorage("vhoops-a2dce.appspot.com")
+            var task = new FirebaseStorage(FirebaseConstants.STORAGE_PATH)
                 .Child("data")
                 .Child("random")
                 .Child("file.png")
@@ -271,7 +271,7 @@ namespace Core.DataAccess.Concrete
                     uriImage = new Uri(profileImage);
                 }
 
-                user = new User(firstName, lastName, email, "", _userName, userID, null, about,documentId);
+                user = new User(firstName, lastName, email, "", _userName, userID, null, about, documentId);
 
             }
             if (user != null)
@@ -309,7 +309,7 @@ namespace Core.DataAccess.Concrete
                 }
 
 
-                user = new User(firstName, lastName, _email, "", userName, userID, uriImage, about,documentId);
+                user = new User(firstName, lastName, _email, "", userName, userID, uriImage, about, documentId);
 
             }
             if (user != null)

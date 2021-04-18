@@ -69,6 +69,7 @@ namespace WebUI.Controllers
 
             var url = await userManager.GetProfileImage();
             Uri uri = new Uri(url.Message);
+
             user.ProfileImage = uri;
             user.DocumentId = UserConstants.userDocumentId;
 

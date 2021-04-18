@@ -32,7 +32,7 @@ namespace WebUI.Controllers
                 if (result.Success)
                 {
                     TempData["Email"] = user_email;
-                    return Redirect("/Chat");
+                     return Redirect("/Chat");
 
                 }
                 else
@@ -60,11 +60,12 @@ namespace WebUI.Controllers
 
             try
             {
-                var auth = new FirebaseAuthProvider(new FirebaseConfig("AIzaSyAEDDiRGZEpFDLluvE9jpnCw9jLI5UjqmQ"));
+                var auth = new FirebaseAuthProvider(new FirebaseConfig("AIzaSyAa4gEa8XFwfGVFSsIsxY7HmjVTzTlPmw8"));
                 var result = await auth.SignInWithEmailAndPasswordAsync(email, password);
                 string token = result.FirebaseToken;
                 var user = result.User;
                 user_email = user.Email;
+                
                 if (token != null)
                 {
                     UserConstants.userId = user.LocalId;

@@ -21,9 +21,9 @@ namespace Core.DataAccess.Constants
         public static string CHAT_COLLECTION = "Chats";
         public static string FRIEND_REQUEST_COLLECTION = "FriendRequests";
         /*<<<<<------------Database properties-------->>>>>*/
-        public static string DATABASE = "vhoops-a2dce";
-        public static string STORAGE_PATH = "vhoops-a2dce.appspot.com";
-        public static string API_URL = "AIzaSyAEDDiRGZEpFDLluvE9jpnCw9jLI5UjqmQ";
+        public static string DATABASE = "vhoops-test-project";
+        public static string STORAGE_PATH = "vhoops-test-project.appspot.com";
+         public static string API_URL = "AIzaSyAa4gEa8XFwfGVFSsIsxY7HmjVTzTlPmw8";
 
 
         public static void RunFirebase()
@@ -31,7 +31,8 @@ namespace Core.DataAccess.Constants
             try
             {
                 //  working cloud firebase and firebaseAuth
-                string path = AppDomain.CurrentDomain.BaseDirectory + @"vhoops-a2dce-firebase-adminsdk-lp79g-52f9a01b70.json";
+                string path = AppDomain.CurrentDomain.BaseDirectory + @"vhoops-test-project-firebase-adminsdk-yhzj9-76b11a2217.json";
+
 
                 FirebaseApp.Create(new AppOptions()
                 {
@@ -43,7 +44,7 @@ namespace Core.DataAccess.Constants
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+               
             }
         }
 
