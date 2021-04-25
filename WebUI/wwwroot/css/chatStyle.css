@@ -160,11 +160,14 @@ place-content: center center;
 }
 
 #general a img:hover {
-width: 208%;
+width: 205%;
+display: grid;
+place-content: center center;
 font-size: 3.8rem;
 }
 
 .chest {
+z-index:-1;
 margin-left: 175%;
 }
 
