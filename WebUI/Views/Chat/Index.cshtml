@@ -48,11 +48,11 @@
             </a>
 
             <a href="#">
-                <span class="chest-badge">3</span>
-                <img class="chest" src="~/images/black-chest.svg" alt="">
+                <span class="chest-badge" ondblclick="closeNotificationNav()" onclick="openNotificationNav(), closeMyNav(), closeNav()">3</span>
+                <img class="chest" ondblclick="closeNotificationNav()" onclick="openNotificationNav(), closeMyNav(), closeNav()" src="~/images/black-chest.svg" alt="">
             </a>
             <div class="myProfile" href="#">
-                <img onclick="openMyNav()" ondblclick="closeMyNav()" src="@ViewBag.Image"
+                <img onclick="openMyNav(), closeNotificationNav()" ondblclick="closeMyNav()" src="@ViewBag.Image"
                      alt="">
 
             </div>
@@ -61,8 +61,8 @@
 
         @*mesajlaşma kutusunun üstündeki alan*@
         <div id="chat-title">
-            <img src="~/images/profile.png" ondblclick="closeNav()" onclick="openNav()" alt="">
-            <div class="person-texting" ondblclick="closeNav()" onclick="openNav()">Kerem Sarı</div>
+            <img src="~/images/profile.png" ondblclick="closeNav()" onclick="openNav(), closeNotificationNav()" alt="">
+            <div class="person-texting" ondblclick="closeNav()" onclick="openNav(), closeNotificationNav()">Kerem Sarı</div>
 
             @*mesajlaşma kutusunun üstünde üç nokta simgesi*@
             <div class="dropdown-container" id="dropdown" tabindex="-1">
@@ -79,25 +79,27 @@
         </div>
 
         @*mesaj alanın içi*@
-        <div id="chat-message-list">
-            @await Html.PartialAsync("_MySideProfilePanel")
-            @*sender message*@
-            <div class="message-row you-message">
-                <div class="message-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae natus quo
-                    eveniet vero!
-                </div>
-                <div class="message-time">12:33</div>
+    <div id="chat-message-list">
+        @await Html.PartialAsync("_MySideProfilePanel")
+        @*sender message*@
+        <div class="message-row you-message">
+            <div class="message-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae natus quo
+                eveniet vero!
             </div>
-            <div class="message-row other-message">
-                <div class="message-text">
-                    Kerem sen çok güzel bir insansın ya. Lorem ipsum dolor sit. Lorem ipsum dolor
-                    sit amet consectetur adipisicing elit. Quo, pariatur?
-                </div>
-                <div class="message-time">12:33</div>
-            </div>
-            @await Html.PartialAsync("_SidePanel")
+            <div class="message-time">12:33</div>
         </div>
+        <div class="message-row other-message">
+            <div class="message-text">
+                Kerem sen çok güzel bir insansın ya. Lorem ipsum dolor sit. Lorem ipsum dolor
+                sit amet consectetur adipisicing elit. Quo, pariatur?
+            </div>
+            <div class="message-time">12:33</div>
+        </div>
+        @await Html.PartialAsync("_SidePanel")
+
+        @await Html.PartialAsync("_AddFriendNav")
+    </div>
 
         <div id="chat-form">
             <div class="chat-svg">
@@ -114,8 +116,6 @@
         </div>
     </div>
     @await Html.PartialAsync("_SettingsPopupPage")
-
-
 
 
 
