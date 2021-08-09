@@ -1,7 +1,7 @@
 # Vhoops_netCore
                                         Welcome to Vhoops
     
-    we are junior developer please if you have any ideas about this project contact to us 
+   
     
 /***********************************************************************************************************************\
 
@@ -9,19 +9,7 @@ English
 
 FIREBASE, FLUENT VALIDATION , MVC and more thing
 
-Hello reader, we have been developing this project approximately for 3 week. it did not finished yet. As a database we use Fireebase. 
-
 Free chat with your friends .If you want to share location,image,video or file you can share easily with Vhoops
-
-/*************************************************************************************************************************\
-
-Turkish
-
-Merhaba, bu projeyi yaklaşık olarak 3 haftadır geliştiriyoruz. Henüz bitmiş bir proje değil. Veri tabanı olarak Firebase kullanmaktayız
-
-Arkadaşlarınızla konuşabilir, resim, video, dosya veya konum paylaşabilirsiniz.
-
-
 
 
 
